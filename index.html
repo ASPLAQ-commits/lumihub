@@ -113,28 +113,34 @@
         }
 
         /* ---------- Cabeçalho ---------- */
-        .app-header { background:#fff; }
+        .app-header { background:linear-gradient(135deg, #0b1b3b 0%, #0F2C59 55%, #1E56A0 100%); border-bottom:1px solid rgba(255,255,255,.14); color:#ffffff; }
         .app-header .hidden { display:none !important; }
         .app-header__inner { max-width:80rem; margin:0 auto; padding:18px 24px; display:flex; flex-wrap:wrap; align-items:center; gap:14px 28px; }
-        .app-brand { display:flex; align-items:center; gap:16px; flex-shrink:0; }
+        .app-brand { display:flex; align-items:center; gap:16px; flex-shrink:0; background:#ffffff; padding:8px 14px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,.18); }
         .app-brand__logo { height:42px; width:auto; object-fit:contain; display:block; }
         .app-brand__divider { width:1px; height:30px; background:var(--line); }
         .app-brand__fallback { width:40px; height:40px; border-radius:10px; background:var(--ink); color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; font-weight:800; font-size:13px; line-height:1; }
         .app-brand__fallback small { font-size:7px; letter-spacing:.08em; color:#aebde0; }
         .app-title { flex:1 1 320px; min-width:0; }
-        .app-eyebrow { display:flex; align-items:center; gap:8px; margin:0 0 4px; font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--brand); }
+        .app-eyebrow { display:flex; align-items:center; gap:8px; margin:0 0 4px; font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#93c5fd; }
         .app-eyebrow::before { content:""; width:16px; height:3px; border-radius:3px; background:var(--accent); }
-        .app-title h1 { margin:0; font-family:'Plus Jakarta Sans','Inter',sans-serif; font-weight:800; font-size:clamp(1.25rem,2.2vw,1.65rem); line-height:1.15; letter-spacing:-.02em; color:var(--ink); }
-        .app-title h1 span { color:var(--muted); font-weight:600; }
-        .app-meta { display:flex; flex-wrap:wrap; align-items:center; gap:6px 16px; margin-top:8px; font-size:12px; color:var(--muted); }
+        .app-title h1 { margin:0; font-family:'Plus Jakarta Sans','Inter',sans-serif; font-weight:800; font-size:clamp(1.25rem,2.2vw,1.65rem); line-height:1.15; letter-spacing:-.02em; color:#ffffff; }
+        .app-title h1 span { color:#bfdbfe; font-weight:600; }
+        .app-meta { display:flex; flex-wrap:wrap; align-items:center; gap:6px 16px; margin-top:8px; font-size:12px; color:rgba(255,255,255,.85); }
         .meta-item { display:inline-flex; align-items:center; gap:6px; font-weight:500; }
-        .meta-item i { font-size:12px; color:#9aa6bd; }
-        .meta-sync[data-state="ok"] i { color:var(--ok); }
-        .meta-sync[data-state="error"] { color:var(--err); }
-        .meta-sync[data-state="error"] i { color:var(--err); }
-        .mode-pill { display:inline-flex; align-items:center; padding:2px 10px; border-radius:999px; font-size:11px; font-weight:700; background:#eef2fb; color:var(--brand-ink); }
-        .mode-pill[data-mode="admin"] { background:#fff3c4; color:#7a5700; }
+        .meta-item i { font-size:12px; color:#93c5fd; }
+        .meta-sync[data-state="ok"] i { color:#34d399; }
+        .meta-sync[data-state="error"] { color:#fca5a5; }
+        .meta-sync[data-state="error"] i { color:#fca5a5; }
+        .mode-pill { display:inline-flex; align-items:center; padding:2px 10px; border-radius:999px; font-size:11px; font-weight:700; background:rgba(255,255,255,.14); color:#e0f2fe; border:1px solid rgba(255,255,255,.24); }
+        .mode-pill[data-mode="admin"] { background:#f5b800; color:#0b1b3b; border-color:#f5b800; }
         .app-actions { margin-left:auto; display:flex; align-items:center; gap:10px; }
+        .app-actions .btn--ghost { background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.28); color:#ffffff; }
+        .app-actions .btn--ghost:hover { background:rgba(255,255,255,.22); border-color:rgba(255,255,255,.4); color:#ffffff; }
+        .app-actions .btn--ghost i { color:#93c5fd; }
+        .app-actions .btn--primary { background:#ffffff; border-color:#ffffff; color:#0F2C59; }
+        .app-actions .btn--primary:hover { background:#eff6ff; border-color:#eff6ff; color:#0F2C59; box-shadow:0 8px 18px -10px rgba(0,0,0,.5); }
+        .app-actions .btn--primary i { color:#1E56A0; }
 
         .btn { display:inline-flex; align-items:center; gap:8px; height:38px; padding:0 15px; border-radius:10px; border:1px solid var(--line); background:#fff; color:var(--ink-2); font:600 13px/1 'Inter',sans-serif; cursor:pointer; white-space:nowrap; transition:background .15s, border-color .15s, color .15s, box-shadow .15s; }
         .btn:hover { background:#f3f5fa; border-color:#d5dbe8; color:var(--ink); }
@@ -147,10 +153,13 @@
         .btn--ok:hover { background:#0c8559; border-color:#0c8559; color:#fff; }
         .btn--ok i { color:#fff; }
         .admin-strip { max-width:80rem; margin:0 auto; padding:9px 24px; display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; }
-        .admin-strip__label { margin-right:auto; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+        .admin-strip__label { margin-right:auto; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#cbd5e1; }
         .admin-strip__label i { margin-right:7px; color:var(--accent); }
         .admin-strip__group { display:flex; gap:8px; }
-        #adminStrip { background:#f8f9fc; border-top:1px solid var(--line); }
+        #adminStrip { background:#091d3e; border-top:1px solid rgba(255,255,255,.12); }
+        #adminStrip .btn--primary { background:#f5b800; border-color:#f5b800; color:#0b1b3b; }
+        #adminStrip .btn--primary:hover { background:#ffca2e; border-color:#ffca2e; color:#0b1b3b; box-shadow:0 8px 18px -10px rgba(0,0,0,.6); }
+        #adminStrip .btn--primary i { color:#0b1b3b; }
         @media (max-width:640px) {
             .app-header__inner { padding:14px 16px; }
             .app-actions { width:100%; }
@@ -412,6 +421,83 @@
         </div>
     </div>
 
+    <!-- ===================== CRUD ADMIN: Modal Novo Gestor ===================== -->
+    <div id="newGestorModal" class="fixed inset-0 z-[45] hidden items-start sm:items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 no-print overflow-y-auto">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-slate-200 my-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3.5 mb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-[#0F2C59] text-white flex items-center justify-center"><i class="fa-solid fa-user-plus"></i></div>
+                    <div>
+                        <h3 class="text-base font-extrabold text-[#0F2C59]">Novo Gestor</h3>
+                        <p class="text-xs text-slate-500">Cadastre um gestor no diretório e, se quiser, já vincule iniciativas</p>
+                    </div>
+                </div>
+                <button onclick="closeCrudModal('newGestorModal')" class="text-slate-400 hover:text-slate-600 p-1 cursor-pointer"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div class="space-y-4">
+                <div class="flex flex-col sm:flex-row gap-5">
+                    <div class="flex flex-col items-center gap-2 shrink-0">
+                        <div id="ngPhotoPreview" class="w-24 h-24 rounded-full bg-slate-100 border-2 border-dashed border-slate-300 flex items-center justify-center text-slate-400 overflow-hidden"><i class="fa-solid fa-user text-3xl"></i></div>
+                        <input id="ngPhotoInput" type="file" accept="image/png, image/jpeg, image/webp" class="hidden" onchange="ngPhotoPicked(this)">
+                        <div class="flex gap-1.5">
+                            <button type="button" onclick="byId('ngPhotoInput').click()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-bold text-[#1E56A0] bg-blue-50 hover:bg-blue-100 border border-blue-200 cursor-pointer"><i class="fa-solid fa-camera"></i>Foto</button>
+                            <button id="ngPhotoClear" type="button" onclick="ngResetPhoto()" class="hidden items-center px-2 py-1.5 rounded-lg text-[11px] font-bold text-[#EF4444] bg-red-50 hover:bg-red-100 border border-red-200 cursor-pointer" title="Remover foto"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <span class="text-[10px] text-slate-400">Opcional</span>
+                    </div>
+                    <div class="flex-1 space-y-3 min-w-0">
+                        <div>
+                            <label for="ngNome" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Nome completo do gestor *</label>
+                            <input id="ngNome" type="text" oninput="ngNomeInput()" placeholder="Ex.: Maria da Silva" class="w-full px-3 py-2 text-sm font-semibold bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1E56A0]">
+                            <p id="ngNomeHint" class="text-[11px] mt-1 text-slate-500"></p>
+                        </div>
+                        <div>
+                            <label for="ngArea" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Área / Unidade</label>
+                            <input id="ngArea" type="text" list="dlAreas" placeholder="Ex.: ASPLAQ, DTI, FISCALIZAÇÃO, PLEN" class="w-full px-3 py-2 text-sm font-semibold bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1E56A0]">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Vincular iniciativas na criação</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <label class="flex items-start gap-2.5 p-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50">
+                            <input type="radio" name="ngLinkMode" value="directory" checked onchange="ngLinkModeChanged()" class="mt-0.5">
+                            <span class="text-xs text-slate-700"><strong class="block text-[#0F2C59]">Apenas cadastrar no diretório</strong>O gestor começa com 0 IEs; atribua iniciativas depois.</span>
+                        </label>
+                        <label class="flex items-start gap-2.5 p-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50">
+                            <input type="radio" name="ngLinkMode" value="link" onchange="ngLinkModeChanged()" class="mt-0.5">
+                            <span class="text-xs text-slate-700"><strong class="block text-[#0F2C59]">Vincular IEs existentes</strong>Busque e marque uma ou mais IEs para o novo gestor.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div id="ngLinkBox" class="hidden space-y-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <label class="flex items-start gap-2.5 p-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50">
+                            <input type="radio" name="ngShareMode" value="share" checked class="mt-0.5">
+                            <span class="text-xs text-slate-700"><strong class="block text-[#0F2C59]">Compartilhar</strong>O titular atual continua com a IE.</span>
+                        </label>
+                        <label class="flex items-start gap-2.5 p-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50">
+                            <input type="radio" name="ngShareMode" value="transfer" class="mt-0.5">
+                            <span class="text-xs text-slate-700"><strong class="block text-[#0F2C59]">Transferir</strong>A titularidade passa para o novo gestor.</span>
+                        </label>
+                    </div>
+                    <input id="ngIeSearch" type="text" oninput="ngRenderIeList()" placeholder="Filtrar por nº, OE, gestor, área ou texto da iniciativa..." class="w-full px-3 py-2 text-sm font-semibold bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1E56A0]">
+                    <div id="ngIeList" class="max-h-56 overflow-y-auto rounded-xl border border-slate-200 divide-y divide-slate-100 bg-white"></div>
+                    <p id="ngSelCount" class="text-[11px] font-bold text-slate-500"></p>
+                </div>
+
+                <div class="flex justify-end gap-2.5 pt-2">
+                    <button onclick="closeCrudModal('newGestorModal')" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 cursor-pointer">Cancelar</button>
+                    <button id="ngSaveBtn" onclick="saveNewGestor()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-[#1E56A0] hover:bg-[#0F2C59] shadow-sm cursor-pointer">
+                        <i class="fa-solid fa-user-plus"></i><span>Cadastrar Gestor</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- ===================== CRUD ADMIN: Modal Gerenciar / Excluir Gestor ===================== -->
     <div id="gestorDelModal" class="fixed inset-0 z-[45] hidden items-start sm:items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 no-print overflow-y-auto">
         <div class="bg-white rounded-2xl max-w-xl w-full p-6 shadow-2xl border border-slate-200 my-4">
@@ -598,6 +684,7 @@
                 <span class="admin-strip__label"><i class="fa-solid fa-screwdriver-wrench"></i>Ferramentas do administrador</span>
                 <div id="adminCrudToolbar" class="admin-strip__group" style="flex-wrap:wrap">
                     <button onclick="openIeModal(null)" title="Cadastrar uma nova iniciativa no Supabase" class="btn btn--sm btn--primary"><i class="fa-solid fa-plus"></i><span>Nova Iniciativa (IE)</span></button>
+                    <button onclick="openNewGestorModal()" title="Cadastrar um novo gestor no diretório (Supabase)" class="btn btn--sm btn--primary"><i class="fa-solid fa-user-plus"></i><span>Novo Gestor</span></button>
                     <button onclick="openAssignModal()" title="Compartilhar, transferir ou retirar vínculos de IEs" class="btn btn--sm"><i class="fa-solid fa-diagram-project"></i><span>Atribuir / Vínculos de IE</span></button>
                     <button onclick="openGestorDelModal()" title="Transferir IEs ou excluir um gestor do planejamento" class="btn btn--sm"><i class="fa-solid fa-user-gear"></i><span>Gerenciar / Excluir Gestor</span></button>
                 </div>
@@ -1654,6 +1741,7 @@
         const EMBEDDED_PHOTOS = {};
         const EMBEDDED_SNAPSHOTS = [];
         const EMBEDDED_FMEA_OVERRIDES = {};
+        const EMBEDDED_GESTORES = [];
         const FORCE_PUBLIC_LOCK = false;
 
         const SUPABASE_URL = 'https://kanjkhdtisequhcxmjhl.supabase.co';
@@ -1663,6 +1751,7 @@
         const ADMIN_PIN = '2026';
 
         let gestorPhotos = {};
+        let ppaGestores = []; // diretório de gestores (tabela ppa_gestores): [{ nome, area }]
         let monthlySnapshots = [];
         let fmeaOverrides = {};
         let isAdminMode = false;
@@ -1773,11 +1862,12 @@
             setSyncStatus('syncing');
             try {
                 if (!sb) throw new Error('SDK do Supabase não carregou');
-                const [ini, ph, sn, fm] = await withTimeout(Promise.all([
+                const [ini, ph, sn, fm, gs] = await withTimeout(Promise.all([
                     sb.from('ppa_initiatives').select('*').order('id', { ascending: true }),
                     sb.from('gestor_photos').select('gestor_name, photo_data'),
                     sb.from('ppa_snapshots').select('label, created_at, oes').order('created_at', { ascending: true }),
-                    sb.from('ppa_fmea_overrides').select('item_key, s, o, d')
+                    sb.from('ppa_fmea_overrides').select('item_key, s, o, d'),
+                    sb.from('ppa_gestores').select('nome, area').order('nome', { ascending: true })
                 ]), SUPABASE_TIMEOUT_MS);
 
                 const firstError = [ini, ph, sn, fm].find(r => r.error);
@@ -1787,6 +1877,7 @@
                 PPA_INITIATIVES = (ini.data && ini.data.length > 0)
                     ? ini.data.map(mapInitiativeRow)
                     : PPA_INITIATIVES_FALLBACK.slice();
+                setPpaGestores(gs && !gs.error ? gs.data : null);
 
                 gestorPhotos = {};
                 (ph.data || []).forEach(r => {
@@ -1812,6 +1903,7 @@
                 console.error('Falha ao hidratar do Supabase:', e);
                 dataFromSupabase = false;
                 PPA_INITIATIVES = PPA_INITIATIVES_FALLBACK.slice();
+                setPpaGestores(null);
                 gestorPhotos = { ...EMBEDDED_PHOTOS };
                 monthlySnapshots = [...EMBEDDED_SNAPSHOTS];
                 fmeaOverrides = { ...EMBEDDED_FMEA_OVERRIDES };
@@ -1938,11 +2030,13 @@
             const photosStr = JSON.stringify(gestorPhotos);
             const snapsStr = JSON.stringify(monthlySnapshots);
             const fmeaStr = JSON.stringify(fmeaOverrides);
+            const gestoresStr = JSON.stringify(ppaGestores.map(g => ({ nome: g.nome, area: g.area }))).replace(/</g, '\\u003c');
 
             let publicHtml = '<!DOCTYPE html>\n' + rawHtml;
             publicHtml = publicHtml.replace(/const EMBEDDED_PHOTOS = \{[\s\S]*?\};/, `const EMBEDDED_PHOTOS = ${photosStr};`);
             publicHtml = publicHtml.replace(/const EMBEDDED_SNAPSHOTS = \[[\s\S]*?\];/, `const EMBEDDED_SNAPSHOTS = ${snapsStr};`);
             publicHtml = publicHtml.replace(/const EMBEDDED_FMEA_OVERRIDES = \{[\s\S]*?\};/, `const EMBEDDED_FMEA_OVERRIDES = ${fmeaStr};`);
+            publicHtml = publicHtml.replace(/const EMBEDDED_GESTORES = \[[\s\S]*?\];/, () => `const EMBEDDED_GESTORES = ${gestoresStr};`);
             publicHtml = publicHtml.replace(/const FORCE_PUBLIC_LOCK = false;/, `const FORCE_PUBLIC_LOCK = true;`);
             try {
                 const fields = ['eixo', 'objetivo', 'numero', 'iniciativa', 'gestor', 'gestor_original', 'area', 'sei', 'pad', 'portaria', 'status'];
@@ -2309,8 +2403,7 @@
                 selectEl.value = values.includes(prev) ? prev : '';
             };
 
-            const uniqueGestores = [...new Set(PPA_INITIATIVES.map(i => i.gestor))].sort((a, b) => a.localeCompare(b, 'pt-BR'));
-            fill(document.getElementById('t1GestorFilter'), uniqueGestores);
+            fill(document.getElementById('t1GestorFilter'), listGestores());
 
             const oeCodes = OE_METADATA.map(oe => oe.code);
             fill(document.getElementById('t1OeFilter'), oeCodes, code => {
@@ -2318,8 +2411,7 @@
                 return `${oe.code} - ${oe.short}`;
             });
 
-            const uniqueAreas = [...new Set(PPA_INITIATIVES.map(i => i.area.trim()))].sort((a, b) => a.localeCompare(b, 'pt-BR'));
-            fill(document.getElementById('t1AreaFilter'), uniqueAreas);
+            fill(document.getElementById('t1AreaFilter'), listAreas());
         }
 
         function getTab1FilteredData() {
@@ -2345,6 +2437,20 @@
                     const hay = `${item.gestor} ${item.numero} ${item.iniciativa} ${item.area} ${item.sei} ${item.pad} ${item.portaria} ${item.objetivo} ${item.eixo}`.toLowerCase();
                     if (!hay.includes(q)) return false;
                 }
+                return true;
+            });
+        }
+
+        // Gestores do diretório sem nenhuma IE, respeitando os filtros da aba (exceto os que exigem IEs)
+        function getTab1ZeroIeGestores() {
+            if (document.getElementById('t1StatusFilter').value || document.getElementById('t1OeFilter').value) return [];
+            const q = normTxt(document.getElementById('t1SearchInput').value.trim());
+            const gFilter = document.getElementById('t1GestorFilter').value;
+            const areaFilter = document.getElementById('t1AreaFilter').value;
+            return listZeroIeGestores().filter(g => {
+                if (gFilter && g.nome !== gFilter) return false;
+                if (areaFilter && g.area.trim() !== areaFilter) return false;
+                if (q && !normTxt(`${g.nome} ${g.area}`).includes(q)) return false;
                 return true;
             });
         }
@@ -2377,7 +2483,8 @@
         function renderGestoresTab() {
             const filtered = getTab1FilteredData();
             const m = calculateMetrics(filtered);
-            const gestoresCount = new Set(filtered.map(i => i.gestor)).size;
+            const zeroIeList = getTab1ZeroIeGestores();
+            const gestoresCount = new Set(filtered.map(i => i.gestor)).size + zeroIeList.length;
 
             document.getElementById('kpiTotal').textContent = m.total;
             document.getElementById('kpiGestoresCount').textContent = `${gestoresCount} gestor${gestoresCount === 1 ? '' : 'es'}`;
@@ -2402,7 +2509,7 @@
             const container = document.getElementById('gestoresCardsContainer');
             const empty = document.getElementById('t1EmptyState');
 
-            if (filtered.length === 0) {
+            if (filtered.length === 0 && zeroIeList.length === 0) {
                 container.innerHTML = '';
                 empty.classList.remove('hidden');
                 return;
@@ -2421,6 +2528,14 @@
                 metrics: calculateMetrics(items),
                 areas: [...new Set(items.map(i => i.area.trim()))],
                 oes: [...new Set(items.map(i => getOeCode(i.objetivo)))].sort()
+            }));
+
+            zeroIeList.forEach(g => groups.push({
+                gestor: g.nome,
+                items: [],
+                metrics: calculateMetrics([]),
+                areas: g.area ? [g.area] : [],
+                oes: []
             }));
 
             const sortMode = document.getElementById('sortGestorSelect').value;
@@ -2489,6 +2604,7 @@
                                 </div>
                             </div>
 
+                            ${isAdminMode && items.length === 0 ? `<button onclick="event.stopPropagation(); openAssignModal(null, '${safeJS}')" title="Atribuir uma IE a ${escapeHTML(gestor)}" class="no-print self-end sm:self-center inline-flex items-center gap-1.5 h-9 px-3 rounded-xl text-[11px] font-bold bg-[#1E56A0] hover:bg-[#0F2C59] text-white cursor-pointer shrink-0"><i class="fa-solid fa-plus"></i>Atribuir IE</button>` : ''}
                             ${isAdminMode ? `<button onclick="event.stopPropagation(); openGestorDelModal('${safeJS}')" title="Gerenciar / Excluir Gestor" class="no-print self-end sm:self-center inline-flex items-center gap-1.5 h-9 px-3 rounded-xl text-[11px] font-bold bg-red-50 text-[#EF4444] border border-red-200 hover:bg-red-100 cursor-pointer shrink-0"><i class="fa-solid fa-user-gear"></i><span class="hidden sm:inline">Gerenciar / Excluir</span></button>` : ''}
                             <div class="no-print self-end sm:self-center w-9 h-9 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 transition-transform ${isOpen ? 'rotate-180 bg-[#1E56A0] text-white' : ''}">
                                 <i class="fa-solid fa-chevron-down text-xs"></i>
@@ -2510,6 +2626,7 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-200 bg-white">
+                                ${items.length === 0 ? `<tr><td colspan="7" class="py-6 px-4 text-center text-slate-500 font-semibold">${escapeHTML(gestor)} ainda não possui IEs vinculadas.</td></tr>` : ''}
                                 ${items.map(it => {
                                     const portTag = getPortariaClassification(it.portaria);
                                     const isShared = it.gestor_original && it.gestor_original !== it.gestor;
@@ -2558,12 +2675,12 @@
          * ABA 2: MAPA DE CONEXÕES (FOTOS × OBJETIVOS ESTRATÉGICOS + REDE)
          * ============================================================================ */
         function buildNetworkTopology() {
-            const allGestores = [...new Set(PPA_INITIATIVES.map(i => i.gestor))].sort((a, b) => a.localeCompare(b, 'pt-BR'));
+            const allGestores = listGestores();
 
             const gestoresNodes = allGestores.map(gestor => {
                 const items = PPA_INITIATIVES.filter(i => i.gestor === gestor);
                 const metrics = calculateMetrics(items);
-                const areas = [...new Set(items.map(i => i.area.trim()))];
+                const areas = items.length ? [...new Set(items.map(i => i.area.trim()))] : [gestorDirArea(gestor)].filter(Boolean);
                 const oes = [...new Set(items.map(i => getOeCode(i.objetivo)))].sort();
                 const hasRisk = items.some(i => i.status.toUpperCase() === 'NÃO INICIADA' || i.status.toUpperCase() === 'CANCELADA' || i.status.toUpperCase() === 'DESCONTINUADA');
                 return {
@@ -2656,9 +2773,10 @@
             document.getElementById('mapTopOeRow').innerHTML = ['OE 01', 'OE 02', 'OE 03'].map(renderOeBox).join('');
             document.getElementById('mapBottomOeRow').innerHTML = ['OE 04', 'OE 05', 'OE 06', 'OE 07'].map(renderOeBox).join('');
 
-            const row1 = gestoresNodes.slice(0, 14);
-            const row2 = gestoresNodes.slice(14, 28);
-            const row3 = gestoresNodes.slice(28, 42);
+            const chunk = Math.ceil(gestoresNodes.length / 3);
+            const row1 = gestoresNodes.slice(0, chunk);
+            const row2 = gestoresNodes.slice(chunk, chunk * 2);
+            const row3 = gestoresNodes.slice(chunk * 2);
 
             const renderGestorAvatarNode = (gn) => {
                 const photo = gestorPhotos[gn.gestor];
@@ -2692,9 +2810,9 @@
             };
 
             document.getElementById('mapCenterCloud').innerHTML = `
-                <div class="flex items-center justify-center gap-2.5">${row1.map(renderGestorAvatarNode).join('')}</div>
-                <div class="flex items-center justify-center gap-2.5 pl-6">${row2.map(renderGestorAvatarNode).join('')}</div>
-                <div class="flex items-center justify-center gap-2.5">${row3.map(renderGestorAvatarNode).join('')}</div>
+                <div class="flex flex-wrap items-center justify-center gap-2.5">${row1.map(renderGestorAvatarNode).join('')}</div>
+                <div class="flex flex-wrap items-center justify-center gap-2.5 pl-6">${row2.map(renderGestorAvatarNode).join('')}</div>
+                <div class="flex flex-wrap items-center justify-center gap-2.5">${row3.map(renderGestorAvatarNode).join('')}</div>
             `;
 
             renderNetworkIntelligenceCards(gestoresNodes, oeStats);
@@ -3457,7 +3575,7 @@
             const filterStatus = document.getElementById('hmStatusFilter').value;
             const onlyMultiOe = document.getElementById('hmMultiOeToggle').checked;
 
-            const allGestores = [...new Set(PPA_INITIATIVES.map(i => i.gestor))].sort((a, b) => a.localeCompare(b, 'pt-BR'));
+            const allGestores = listGestores();
 
             const rows = allGestores.map(gestor => {
                 const items = PPA_INITIATIVES.filter(i => i.gestor === gestor);
@@ -4227,7 +4345,7 @@
 
         function openCrudModal(id) { const m = byId(id); if (m) { m.classList.remove('hidden'); m.classList.add('flex'); } }
         function closeCrudModal(id) { const m = byId(id); if (m) { m.classList.add('hidden'); m.classList.remove('flex'); } }
-        function closeAllCrudModals() { ['ieEditModal', 'assignModal', 'gestorDelModal'].forEach(closeCrudModal); }
+        function closeAllCrudModals() { ['ieEditModal', 'assignModal', 'gestorDelModal', 'newGestorModal'].forEach(closeCrudModal); }
         function isModalOpen(id) { const m = byId(id); return !!m && !m.classList.contains('hidden'); }
 
         function requireAdmin() {
@@ -4257,8 +4375,60 @@
         /* ---------- helpers de dados ---------- */
         function getIniById(id) { return PPA_INITIATIVES.find(i => i.id != null && String(i.id) === String(id)); }
         function oeKey(it) { return `${getOeCode(it.objetivo)}|${String(it.numero || '').trim().toUpperCase()}`; }
-        function listGestores() { return [...new Set(PPA_INITIATIVES.map(i => i.gestor))].filter(Boolean).sort((a, b) => a.localeCompare(b, 'pt-BR')); }
-        function listAreas() { return [...new Set(PPA_INITIATIVES.map(i => String(i.area || '').trim()))].filter(Boolean).sort((a, b) => a.localeCompare(b, 'pt-BR')); }
+        /* ---------- diretório de gestores (ppa_gestores ∪ gestores das IEs) ---------- */
+        function deriveGestoresFromInitiatives() {
+            const m = new Map();
+            PPA_INITIATIVES.forEach(i => {
+                if (i.gestor && !m.has(i.gestor)) m.set(i.gestor, String(i.area || '').trim());
+            });
+            return [...m.entries()].map(([nome, area]) => ({ nome, area }));
+        }
+        function setPpaGestores(rows) {
+            let list = [];
+            if (Array.isArray(rows) && rows.length) {
+                list = rows.map(r => ({ nome: canonGestor(r.nome), area: String(r.area == null ? '' : r.area).trim() }));
+            } else if (EMBEDDED_GESTORES.length) {
+                list = EMBEDDED_GESTORES.map(r => ({ nome: canonGestor(r.nome), area: String(r.area == null ? '' : r.area).trim() }));
+            } else {
+                list = deriveGestoresFromInitiatives();
+            }
+            const seen = new Set();
+            ppaGestores = list.filter(g => g.nome && !seen.has(g.nome) && seen.add(g.nome))
+                .sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
+        }
+        function listGestores() {
+            const names = new Set(PPA_INITIATIVES.map(i => i.gestor).filter(Boolean));
+            ppaGestores.forEach(g => names.add(g.nome));
+            return [...names].sort((a, b) => a.localeCompare(b, 'pt-BR'));
+        }
+        // Gestores cadastrados no diretório que ainda não têm nenhuma IE
+        function listZeroIeGestores() {
+            const withIe = new Set(PPA_INITIATIVES.map(i => i.gestor));
+            return ppaGestores.filter(g => !withIe.has(g.nome));
+        }
+        function gestorDirArea(nome) {
+            const d = ppaGestores.find(g => g.nome === nome);
+            if (d && d.area) return d.area;
+            const it = PPA_INITIATIVES.find(i => i.gestor === nome);
+            return it ? String(it.area || '').trim() : '';
+        }
+        // Registra no diretório (ppa_gestores) um gestor novo usado em uma IE; falha não é fatal
+        async function ensureGestorRegistered(nome, area) {
+            if (!nome || ppaGestores.some(g => g.nome === nome)) return;
+            try {
+                await sbRpc('admin_upsert_gestor', { p_nome: nome, p_area: String(area || '').trim() });
+                ppaGestores.push({ nome, area: String(area || '').trim() });
+                ppaGestores.sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
+            } catch (e) {
+                console.warn('Falha ao registrar gestor no diretório:', e);
+                showToast(`A IE foi salva, mas não foi possível registrar ${nome} no diretório de gestores: ${e.message}`, 'error');
+            }
+        }
+        function listAreas() {
+            const areas = new Set(PPA_INITIATIVES.map(i => String(i.area || '').trim()));
+            ppaGestores.forEach(g => areas.add(String(g.area || '').trim()));
+            return [...areas].filter(Boolean).sort((a, b) => a.localeCompare(b, 'pt-BR'));
+        }
         function listEixos() { return [...new Set(PPA_INITIATIVES.map(i => i.eixo))].filter(Boolean).sort((a, b) => a.localeCompare(b, 'pt-BR')); }
         function joinNames(n) { return n.length <= 1 ? (n[0] || '') : n.slice(0, -1).join(', ') + ' e ' + n[n.length - 1]; }
         function truncateTxt(s, n) { s = String(s || ''); return s.length > n ? s.slice(0, n - 1) + '…' : s; }
@@ -4320,15 +4490,17 @@
         async function syncFromServer() {
             if (!sb) return false;
             try {
-                const [ini, ph, fm] = await withTimeout(Promise.all([
+                const [ini, ph, fm, gs] = await withTimeout(Promise.all([
                     sb.from('ppa_initiatives').select('*').order('id', { ascending: true }),
                     sb.from('gestor_photos').select('gestor_name, photo_data'),
-                    sb.from('ppa_fmea_overrides').select('item_key, s, o, d')
+                    sb.from('ppa_fmea_overrides').select('item_key, s, o, d'),
+                    sb.from('ppa_gestores').select('nome, area').order('nome', { ascending: true })
                 ]), SUPABASE_TIMEOUT_MS);
                 const err = [ini, ph, fm].find(r => r.error);
                 if (err) throw new Error(err.error.message);
 
                 PPA_INITIATIVES = (ini.data || []).map(mapInitiativeRow);
+                setPpaGestores(gs && !gs.error ? gs.data : null);
 
                 gestorPhotos = {};
                 (ph.data || []).forEach(r => {
@@ -4390,7 +4562,7 @@
 
         // Reconstrói tudo o que depende de PPA_INITIATIVES sem recarregar a página
         function afterDataChange() {
-            const names = new Set(PPA_INITIATIVES.map(i => i.gestor));
+            const names = new Set(listGestores());
             [...expandedGestores].forEach(g => { if (!names.has(g)) expandedGestores.delete(g); });
             if (mapSelectedNode && mapSelectedNode.type === 'gestor' && !names.has(mapSelectedNode.id)) mapSelectedNode = null;
             mapHoveredNode = null;
@@ -4415,6 +4587,7 @@
                 realtimeChannel = sb.channel('ppa-live')
                     .on('postgres_changes', { event: '*', schema: 'public', table: 'ppa_initiatives' }, scheduleRemoteRefresh)
                     .on('postgres_changes', { event: '*', schema: 'public', table: 'gestor_photos' }, scheduleRemoteRefresh)
+                    .on('postgres_changes', { event: '*', schema: 'public', table: 'ppa_gestores' }, scheduleRemoteRefresh)
                     .on('postgres_changes', { event: '*', schema: 'public', table: 'ppa_fmea_overrides' }, scheduleRemoteRefresh)
                     .subscribe();
             } catch (e) { console.warn('Realtime indisponível:', e); }
@@ -4544,6 +4717,7 @@
             await runBusy(byId('ieSaveBtn'), 'Salvando...', async () => {
                 try {
                     const savedId = await rpcUpsertInitiative(rec);
+                    await ensureGestorRegistered(rec.gestor, rec.area);
                     const keys = new Set([oeKey(rec)]);
                     if (old) keys.add(oeKey(old));
                     const identityChanged = !old || oeKey(old) !== oeKey(rec) || old.gestor !== rec.gestor;
@@ -4563,7 +4737,7 @@
         }
 
         /* ---------- Atribuir / compartilhar / transferir / retirar ---------- */
-        function openAssignModal(preselectId = null) {
+        function openAssignModal(preselectId = null, targetGestor = null) {
             if (!requireAdmin() || !requireOnline()) return;
             byId('asgSearch').value = '';
             byId('asgTarget').value = '';
@@ -4572,6 +4746,7 @@
             byId('dlGestores').innerHTML = listGestores().map(g => `<option value="${escapeHTML(g)}"></option>`).join('');
             asgRenderList(preselectId);
             asgRenderLinks();
+            if (targetGestor) { byId('asgTarget').value = targetGestor; asgTargetInput(); }
             openCrudModal('assignModal');
         }
 
@@ -4644,6 +4819,7 @@
                         src.gestor = target;
                         src._gestorRaw = target;
                     }
+                    await ensureGestorRegistered(target, src.area);
                     await syncShareLabelsSafe(keys);
                     await syncFromServer();
                     expandedGestores.add(target);
@@ -4691,6 +4867,174 @@
             } finally {
                 crudBusy = false;
             }
+        }
+
+
+        /* ---------- Cadastro de novo gestor ---------- */
+        const DEFAULT_AREAS = ['ASPLAQ', 'DTI', 'FISCALIZAÇÃO', 'PLEN'];
+        let ngPhotoFile = null;
+        let ngPhotoUrl = null;
+        let ngSelected = new Set();
+
+        function ngResetPhoto() {
+            if (ngPhotoUrl) { try { URL.revokeObjectURL(ngPhotoUrl); } catch (e) { /* ignora */ } }
+            ngPhotoFile = null; ngPhotoUrl = null;
+            const inp = byId('ngPhotoInput'); if (inp) inp.value = '';
+            byId('ngPhotoPreview').innerHTML = '<i class="fa-solid fa-user text-3xl"></i>';
+            byId('ngPhotoClear').classList.add('hidden');
+            byId('ngPhotoClear').classList.remove('inline-flex');
+        }
+
+        function ngPhotoPicked(input) {
+            const file = input.files && input.files[0];
+            if (!file) return;
+            if (!/^image\//.test(file.type)) { showToast('Selecione um arquivo de imagem (PNG, JPG ou WEBP).', 'error'); input.value = ''; return; }
+            if (ngPhotoUrl) { try { URL.revokeObjectURL(ngPhotoUrl); } catch (e) { /* ignora */ } }
+            ngPhotoFile = file;
+            ngPhotoUrl = URL.createObjectURL(file);
+            byId('ngPhotoPreview').innerHTML = `<img src="${ngPhotoUrl}" alt="Pré-visualização" class="w-full h-full object-cover">`;
+            byId('ngPhotoClear').classList.remove('hidden');
+            byId('ngPhotoClear').classList.add('inline-flex');
+        }
+
+        function ngFindDuplicate(nome) {
+            const k = normTxt(canonGestor(nome));
+            return k ? listGestores().find(g => normTxt(g) === k) : null;
+        }
+
+        function ngNomeInput() {
+            const hint = byId('ngNomeHint');
+            const v = canonGestor(byId('ngNome').value);
+            if (!v) { hint.textContent = ''; hint.className = 'text-[11px] mt-1 text-slate-500'; return; }
+            const dup = ngFindDuplicate(v);
+            if (dup) { hint.textContent = `Já existe um gestor cadastrado como "${dup}".`; hint.className = 'text-[11px] mt-1 font-bold text-[#EF4444]'; }
+            else { hint.textContent = 'Nome disponível.'; hint.className = 'text-[11px] mt-1 font-bold text-emerald-600'; }
+        }
+
+        function ngLinkModeChanged() {
+            const link = document.querySelector('input[name="ngLinkMode"]:checked').value === 'link';
+            byId('ngLinkBox').classList.toggle('hidden', !link);
+            if (link) ngRenderIeList();
+        }
+
+        function ngUpdateSelCount() {
+            const n = ngSelected.size;
+            byId('ngSelCount').textContent = n ? `${n} IE${n === 1 ? '' : 's'} selecionada${n === 1 ? '' : 's'}` : 'Nenhuma IE selecionada.';
+        }
+
+        function ngToggleIe(id, on) {
+            if (on) ngSelected.add(String(id)); else ngSelected.delete(String(id));
+            ngUpdateSelCount();
+        }
+
+        function ngRenderIeList() {
+            const q = normTxt(byId('ngIeSearch').value.trim());
+            const LIMIT = 150;
+            const rows = PPA_INITIATIVES
+                .filter(i => i.id != null)
+                .filter(i => !q || normTxt(`${getOeCode(i.objetivo)} ${i.numero} ${i.gestor} ${i.area} ${i.iniciativa}`).includes(q))
+                .sort((a, b) => getOeCode(a.objetivo).localeCompare(getOeCode(b.objetivo))
+                    || String(a.numero).localeCompare(String(b.numero), 'pt-BR', { numeric: true })
+                    || a.gestor.localeCompare(b.gestor, 'pt-BR'));
+            const shown = rows.slice(0, LIMIT);
+            byId('ngIeList').innerHTML = shown.length ? shown.map(i => `
+                <label class="flex items-start gap-2.5 px-3 py-2 cursor-pointer hover:bg-slate-50 text-xs">
+                    <input type="checkbox" class="mt-0.5" ${ngSelected.has(String(i.id)) ? 'checked' : ''} onchange="ngToggleIe('${String(i.id)}', this.checked)">
+                    <span class="min-w-0">
+                        <strong class="text-[#0F2C59]">${escapeHTML(getOeCode(i.objetivo))} · ${escapeHTML(i.numero)}</strong>
+                        <span class="text-slate-500"> · ${escapeHTML(i.gestor)}</span>
+                        <span class="block text-slate-600">${escapeHTML(truncateTxt(i.iniciativa, 110))}</span>
+                    </span>
+                </label>`).join('')
+                : '<p class="p-3 text-xs text-slate-500">Nenhuma IE encontrada.</p>';
+            if (rows.length > LIMIT) byId('ngIeList').insertAdjacentHTML('beforeend', `<p class="p-2 text-center text-[11px] text-slate-400">Mostrando ${LIMIT} de ${rows.length}. Refine a busca para ver as demais.</p>`);
+            ngUpdateSelCount();
+        }
+
+        function openNewGestorModal() {
+            if (!requireAdmin() || !requireOnline()) return;
+            byId('ngNome').value = '';
+            byId('ngArea').value = '';
+            byId('ngNomeHint').textContent = '';
+            byId('ngIeSearch').value = '';
+            ngResetPhoto();
+            ngSelected = new Set();
+            document.querySelector('input[name="ngLinkMode"][value="directory"]').checked = true;
+            document.querySelector('input[name="ngShareMode"][value="share"]').checked = true;
+            const areas = [...new Set([...DEFAULT_AREAS, ...listAreas()])].sort((a, b) => a.localeCompare(b, 'pt-BR'));
+            byId('dlAreas').innerHTML = areas.map(a => `<option value="${escapeHTML(a)}"></option>`).join('');
+            ngLinkModeChanged();
+            openCrudModal('newGestorModal');
+            setTimeout(() => byId('ngNome').focus(), 80);
+        }
+
+        async function saveNewGestor() {
+            if (!requireAdmin() || !requireOnline()) return;
+            const nome = canonGestor(byId('ngNome').value);
+            const area = byId('ngArea').value.trim().replace(/\s+/g, ' ');
+            if (!nome) { showToast('Informe o nome completo do gestor.', 'error'); return; }
+            const dup = ngFindDuplicate(nome);
+            if (dup) { showToast(`Já existe um gestor cadastrado como "${dup}".`, 'error'); return; }
+
+            const linkMode = document.querySelector('input[name="ngLinkMode"]:checked').value;
+            const shareMode = document.querySelector('input[name="ngShareMode"]:checked').value;
+            let srcRows = [];
+            if (linkMode === 'link') {
+                srcRows = [...ngSelected].map(id => getIniById(id)).filter(Boolean);
+                if (!srcRows.length) { showToast('Marque ao menos uma IE ou escolha "Apenas cadastrar no diretório".', 'error'); return; }
+            }
+
+            await runBusy(byId('ngSaveBtn'), 'Salvando...', async () => {
+                try {
+                    await sbRpc('admin_upsert_gestor', { p_nome: nome, p_area: area });
+                    if (!ppaGestores.some(g => g.nome === nome)) {
+                        ppaGestores.push({ nome, area });
+                        ppaGestores.sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
+                    }
+
+                    let photoFailed = false;
+                    if (ngPhotoFile) {
+                        try {
+                            const dataUrl = await resizeImageCanvas(ngPhotoFile, 200, 0.8);
+                            await sbRpc('admin_upsert_photo', { p_name: nome, p_data: dataUrl });
+                            gestorPhotos[nome] = dataUrl;
+                        } catch (e) {
+                            photoFailed = true;
+                            showToast(`Gestor cadastrado, mas a foto não foi salva: ${e.message}`, 'error');
+                        }
+                    }
+
+                    const keys = new Set();
+                    let linked = 0;
+                    for (const src of srcRows) {
+                        const key = oeKey(src);
+                        if (keys.has(key)) continue; // evita duplicar a mesma IE para o mesmo gestor
+                        if (shareMode === 'share') {
+                            const copy = { ...src, id: null, gestor: nome, _gestorRaw: '', _origRaw: '' };
+                            const newId = await rpcUpsertInitiative(copy);
+                            PPA_INITIATIVES.push({ ...copy, id: newId });
+                        } else {
+                            await rpcUpsertInitiative({ ...src, gestor: nome, _gestorRaw: '' });
+                            src.gestor = nome;
+                            src._gestorRaw = nome;
+                        }
+                        keys.add(key);
+                        linked++;
+                    }
+                    if (linked) await syncShareLabelsSafe(keys);
+                    await syncFromServer();
+
+                    if (linked) expandedGestores.add(nome);
+                    closeCrudModal('newGestorModal');
+                    afterDataChange();
+                    const extra = linked ? ` com ${linked} IE${linked === 1 ? '' : 's'} (${shareMode === 'share' ? 'compartilhada' : 'transferida'}${linked === 1 ? '' : 's'})` : ' (0 IEs — atribua iniciativas quando quiser)';
+                    showToast(`${nome} cadastrado(a)${extra}!${photoFailed ? '' : ''}`, 'success');
+                } catch (e) {
+                    showToast(`Falha ao cadastrar gestor: ${e.message}`, 'error');
+                    await syncFromServer();
+                    afterDataChange();
+                }
+            });
         }
 
         /* ---------- Gerenciar / excluir gestor ---------- */
@@ -4769,6 +5113,9 @@
                     for (const raw of rawNames) {
                         await sbRpc('admin_delete_gestor', { p_gestor: raw, p_novo_gestor: rawTarget });
                     }
+
+                    try { await sb.from('ppa_gestores').delete().eq('nome', name); } catch (e) { /* melhor esforço */ }
+                    ppaGestores = ppaGestores.filter(g => g.nome !== name);
 
                     // limpeza local imediata (foto e FMEA do gestor removido)
                     [name, ...rawNames].forEach(n => {
