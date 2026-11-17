@@ -294,6 +294,170 @@
         </div>
     </div>
 
+    <!-- ===================== CRUD ADMIN: Modal de Iniciativa (Criar / Editar) ===================== -->
+    <div id="ieEditModal" class="fixed inset-0 z-[45] hidden items-start sm:items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 no-print overflow-y-auto">
+        <div class="bg-white rounded-2xl max-w-3xl w-full p-6 shadow-2xl border border-slate-200 my-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3.5 mb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-[#0F2C59] text-white flex items-center justify-center"><i id="ieEditIcon" class="fa-solid fa-pen-to-square"></i></div>
+                    <div>
+                        <h3 id="ieEditTitle" class="text-base font-extrabold text-[#0F2C59]">Editar Iniciativa (IE)</h3>
+                        <p id="ieEditSubtitle" class="text-xs text-slate-500"></p>
+                    </div>
+                </div>
+                <button onclick="closeCrudModal('ieEditModal')" class="text-slate-400 hover:text-slate-600 p-1 cursor-pointer"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="sm:col-span-2">
+                    <label for="ieObjetivo" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Objetivo Estratégico</label>
+                    <select id="ieObjetivo" onchange="ieObjetivoChanged()" class="w-full px-3 py-2 text-sm font-semibold bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1E56A0]"></select>
+                </div>
+                <div class="sm:col-span-2">
+                    <label for="ieEixo" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Eixo</label>
+                    <input id="ieEixo" type="text" list="dlEixos" class="w-full px-3 py-2 text-sm font-semibold bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1E56A0]">
+                </div>
+                <div>
+                    <label for="ieNumero" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Nº da IE</label>
+                    <input id="ieNumero" type="text" placeholder="Ex: IE12." class="w-full px-3 py-2 text-sm font-semibold bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1E56A0]">
+                </div>
+                <div>
+                    <label for="ieStatus" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Status</label>
+                    <select id="ieStatus" class="w-full px-3 py-2 text-sm font-semibold bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1E56A0]"></select>
+                </div>
+                <div class="sm:col-span-2">
+                    <label for="ieIniciativa" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Descrição da Iniciativa</label>
+                    <textarea id="ieIniciativa" rows="4" class="w-full px-3 py-2 text-sm font-semibold bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1E56A0]"></textarea>
+                </div>
+                <div>
+                    <label for="ieGestor" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Gestor responsável</label>
+                    <input id="ieGestor" type="text" list="dlGestores" class="w-full px-3 py-2 text-sm font-semibold bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1E56A0]">
+                    <p class="text-[11px] text-slate-500 mt-1">Escolha um gestor da lista ou digite um nome novo para cadastrá-lo.</p>
+                </div>
+                <div>
+                    <label for="ieArea" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Área / Unidade</label>
+                    <input id="ieArea" type="text" list="dlAreas" placeholder="Ex: ASPLAQ" class="w-full px-3 py-2 text-sm font-semibold bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1E56A0]">
+                </div>
+                <div class="sm:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div>
+                        <label for="ieSei" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">SEI</label>
+                        <input id="ieSei" type="text" placeholder="-" class="w-full px-3 py-2 text-sm font-semibold bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1E56A0]">
+                    </div>
+                    <div>
+                        <label for="iePad" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">PAD</label>
+                        <input id="iePad" type="text" placeholder="-" class="w-full px-3 py-2 text-sm font-semibold bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1E56A0]">
+                    </div>
+                    <div>
+                        <label for="iePortaria" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Portaria</label>
+                        <input id="iePortaria" type="text" placeholder="-" class="w-full px-3 py-2 text-sm font-semibold bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1E56A0]">
+                    </div>
+                </div>
+            </div>
+            <datalist id="dlEixos"></datalist>
+            <datalist id="dlGestores"></datalist>
+            <datalist id="dlAreas"></datalist>
+            <div class="flex justify-end gap-2.5 pt-5">
+                <button onclick="closeCrudModal('ieEditModal')" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 cursor-pointer">Cancelar</button>
+                <button id="ieSaveBtn" onclick="saveIeModal()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-[#10B981] hover:bg-emerald-600 shadow-sm cursor-pointer">
+                    <i class="fa-solid fa-floppy-disk"></i><span id="ieSaveLabel">Salvar Alterações</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== CRUD ADMIN: Modal Atribuir / Gerenciar Vínculos de IE ===================== -->
+    <div id="assignModal" class="fixed inset-0 z-[45] hidden items-start sm:items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 no-print overflow-y-auto">
+        <div class="bg-white rounded-2xl max-w-3xl w-full p-6 shadow-2xl border border-slate-200 my-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3.5 mb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-[#0F2C59] text-white flex items-center justify-center"><i class="fa-solid fa-diagram-project"></i></div>
+                    <div>
+                        <h3 class="text-base font-extrabold text-[#0F2C59]">Atribuir / Gerenciar Vínculos de IE</h3>
+                        <p class="text-xs text-slate-500">Compartilhe uma IE com outro gestor, transfira a titularidade ou retire vínculos</p>
+                    </div>
+                </div>
+                <button onclick="closeCrudModal('assignModal')" class="text-slate-400 hover:text-slate-600 p-1 cursor-pointer"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label for="asgSearch" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">1. Escolha a IE (cada linha = IE de um gestor)</label>
+                    <input id="asgSearch" type="text" oninput="asgRenderList()" placeholder="Filtrar por nº, OE, gestor, área ou texto da iniciativa..." class="w-full px-3 py-2 text-sm font-semibold bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1E56A0]">
+                    <select id="asgIeSelect" size="7" onchange="asgRenderLinks()" class="mt-2 w-full px-2 py-1.5 text-xs font-semibold bg-white border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1E56A0]"></select>
+                </div>
+                <div id="asgLinksBox" class="rounded-xl border border-slate-200 bg-slate-50 p-3 text-xs text-slate-600"></div>
+                <div>
+                    <span class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">2. O que fazer com a IE selecionada?</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <label class="flex items-start gap-2.5 p-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50">
+                            <input type="radio" name="asgMode" value="share" checked class="mt-0.5">
+                            <span class="text-xs text-slate-700"><strong class="block text-[#0F2C59]">Compartilhar</strong>Cria um novo vínculo para o gestor de destino; o titular atual continua com a IE.</span>
+                        </label>
+                        <label class="flex items-start gap-2.5 p-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50">
+                            <input type="radio" name="asgMode" value="transfer" class="mt-0.5">
+                            <span class="text-xs text-slate-700"><strong class="block text-[#0F2C59]">Transferir</strong>Move a titularidade: a IE deixa o gestor atual e passa ao gestor de destino.</span>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <label for="asgTarget" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">3. Gestor de destino</label>
+                    <input id="asgTarget" type="text" list="dlGestores" oninput="asgTargetInput()" placeholder="Selecione ou digite o nome de um novo gestor" class="w-full px-3 py-2 text-sm font-semibold bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1E56A0]">
+                    <p id="asgTargetHint" class="text-[11px] text-slate-500 mt-1"></p>
+                </div>
+                <div class="flex justify-end gap-2.5 pt-2">
+                    <button onclick="closeCrudModal('assignModal')" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 cursor-pointer">Fechar</button>
+                    <button id="asgConfirmBtn" onclick="confirmAssign()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-[#1E56A0] hover:bg-[#0F2C59] shadow-sm cursor-pointer">
+                        <i class="fa-solid fa-user-plus"></i><span>Aplicar</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== CRUD ADMIN: Modal Gerenciar / Excluir Gestor ===================== -->
+    <div id="gestorDelModal" class="fixed inset-0 z-[45] hidden items-start sm:items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 no-print overflow-y-auto">
+        <div class="bg-white rounded-2xl max-w-xl w-full p-6 shadow-2xl border border-slate-200 my-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3.5 mb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-red-100 text-[#EF4444] flex items-center justify-center"><i class="fa-solid fa-user-gear"></i></div>
+                    <div>
+                        <h3 class="text-base font-extrabold text-[#0F2C59]">Gerenciar / Excluir Gestor</h3>
+                        <p class="text-xs text-slate-500">Gestor que saiu do planejamento</p>
+                    </div>
+                </div>
+                <button onclick="closeCrudModal('gestorDelModal')" class="text-slate-400 hover:text-slate-600 p-1 cursor-pointer"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label for="gdPick" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Gestor</label>
+                    <select id="gdPick" onchange="gdRefresh()" class="w-full px-3 py-2 text-sm font-semibold bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1E56A0]"></select>
+                    <p id="gdSummary" class="text-xs text-slate-600 mt-2"></p>
+                </div>
+                <label id="gdBoxTransfer" class="block p-3 rounded-xl border border-slate-300 cursor-pointer">
+                    <span class="flex items-start gap-2.5">
+                        <input type="radio" name="gdMode" value="transfer" checked onchange="gdRefresh()" class="mt-0.5">
+                        <span class="text-xs text-slate-700"><strong class="block text-[#0F2C59]">Opção A — Transferir e excluir</strong>Todas as IEs do gestor passam para outro gestor, e só então ele é removido do painel (foto e calibrações FMEA são limpas).</span>
+                    </span>
+                    <select id="gdTarget" onchange="gdRefresh()" class="mt-2.5 w-full px-3 py-2 text-sm font-semibold bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1E56A0]"></select>
+                    <span id="gdConflict" class="block text-[11px] text-amber-700 mt-1.5"></span>
+                </label>
+                <label id="gdBoxDelete" class="block p-3 rounded-xl border border-slate-300 cursor-pointer">
+                    <span class="flex items-start gap-2.5">
+                        <input type="radio" name="gdMode" value="delete" onchange="gdRefresh()" class="mt-0.5">
+                        <span class="text-xs text-slate-700"><strong class="block text-[#EF4444]">Opção B — Excluir gestor e suas IEs</strong>Remove permanentemente o gestor, as iniciativas vinculadas a ele, sua foto e seus registros FMEA.</span>
+                    </span>
+                    <span class="flex items-center gap-2 mt-2.5 text-[11px] font-bold text-slate-700">
+                        <input id="gdAck" type="checkbox"> Entendo que esta ação é permanente e não pode ser desfeita.
+                    </span>
+                </label>
+                <div class="flex justify-end gap-2.5 pt-2">
+                    <button onclick="closeCrudModal('gestorDelModal')" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 cursor-pointer">Cancelar</button>
+                    <button id="gdConfirmBtn" onclick="confirmGestorDelete()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-[#EF4444] hover:bg-red-600 shadow-sm cursor-pointer">
+                        <i class="fa-solid fa-user-minus"></i><span id="gdConfirmLabel">Transferir e Excluir</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Drawer Lateral de Detalhes (Usado tanto no Mapa de Conexões quanto no Heatmap) -->
     <div id="detailDrawerModal" class="fixed inset-0 z-50 hidden justify-end bg-slate-900/50 backdrop-blur-xs no-print" onclick="if(event.target===this) closeDetailDrawer()">
         <div class="bg-white w-full max-w-2xl h-full shadow-2xl border-l border-slate-200 flex flex-col overflow-hidden">
@@ -432,6 +596,11 @@
         <div id="adminStrip" class="hidden">
             <div class="admin-strip">
                 <span class="admin-strip__label"><i class="fa-solid fa-screwdriver-wrench"></i>Ferramentas do administrador</span>
+                <div id="adminCrudToolbar" class="admin-strip__group" style="flex-wrap:wrap">
+                    <button onclick="openIeModal(null)" title="Cadastrar uma nova iniciativa no Supabase" class="btn btn--sm btn--primary"><i class="fa-solid fa-plus"></i><span>Nova Iniciativa (IE)</span></button>
+                    <button onclick="openAssignModal()" title="Compartilhar, transferir ou retirar vínculos de IEs" class="btn btn--sm"><i class="fa-solid fa-diagram-project"></i><span>Atribuir / Vínculos de IE</span></button>
+                    <button onclick="openGestorDelModal()" title="Transferir IEs ou excluir um gestor do planejamento" class="btn btn--sm"><i class="fa-solid fa-user-gear"></i><span>Gerenciar / Excluir Gestor</span></button>
+                </div>
                 <div id="adminBackupToolbar" class="admin-strip__group">
                     <button onclick="exportPhotosJSON()" title="Exportar backup de fotos salvas (.json)" class="btn btn--sm"><i class="fa-solid fa-file-export"></i><span>Exportar fotos</span></button>
                     <button onclick="triggerImportPhotosJSON()" title="Importar backup de fotos (.json)" class="btn btn--sm"><i class="fa-solid fa-file-import"></i><span>Importar fotos</span></button>
@@ -682,7 +851,7 @@
                             VOLUME E SITUAÇÃO POR OBJETIVO ESTRATÉGICO
                         </h3>
                         <p id="oeVolumeSubtitle" class="text-xs text-[#64748b] mt-0.5 mb-4">
-                            Distribuição absoluta das 102 iniciativas por OE (01 a 07)
+                            Distribuição absoluta das <span id="staticIeTotalTxt">102</span> iniciativas por OE (01 a 07)
                         </p>
                     </div>
                     <div class="relative h-[300px] w-full">
@@ -725,7 +894,7 @@
                     <div>
                         <div class="flex items-center gap-2">
                             <span class="px-2.5 py-0.5 rounded-md text-[10px] font-black uppercase bg-[#0F2C59] text-white">Topologia Organizacional</span>
-                            <h2 class="text-base font-extrabold text-[#0F2C59]">Mapa de Conexões: Pessoas (42 Gestores) × Objetivos Estratégicos (OE 01–07)</h2>
+                            <h2 class="text-base font-extrabold text-[#0F2C59]">Mapa de Conexões: Pessoas (<span id="staticMapGestoresTxt">42</span> Gestores) × Objetivos Estratégicos (OE 01–07)</h2>
                         </div>
                         <p class="text-xs text-[#64748B] mt-1">Passe o mouse ou clique sobre qualquer <strong>foto de gestor</strong> ou <strong>bloco de OE</strong> para destacar vínculos, ou clique novamente para abrir o painel detalhado.</p>
                     </div>
@@ -747,7 +916,7 @@
                     <div class="md:col-span-5">
                         <label for="mapLensSelect" class="block text-[11px] font-extrabold uppercase tracking-wider text-slate-500 mb-1">Lente de Análise Estrutural:</label>
                         <select id="mapLensSelect" onchange="renderMapaTab()" class="w-full px-3 py-2 text-xs sm:text-sm font-bold text-[#0F2C59] bg-blue-50/70 border border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1E56A0] cursor-pointer">
-                            <option value="all">Todas as Conexões (42 Gestores • 58 Vínculos)</option>
+                            <option id="mapLensAllOpt" value="all">Todas as Conexões (42 Gestores • 58 Vínculos)</option>
                             <option value="bridges">Gestores Transversais / Pontes (Atuam em 2+ OEs)</option>
                             <option value="risk">Foco em Risco / Gargalo (Vínculos com Não Iniciada ou Cancelada)</option>
                             <option value="completed">Vínculos 100% Concluídos (Entregas Finalizadas)</option>
@@ -1528,6 +1697,7 @@
         let sb = null;
         let syncPending = 0;
         let lastSyncFailed = false;
+        let dataFromSupabase = false;
 
         function initSupabaseClient() {
             try {
@@ -1591,6 +1761,9 @@
             const o = {};
             ['eixo', 'objetivo', 'numero', 'iniciativa', 'gestor', 'gestor_original', 'area', 'sei', 'pad', 'portaria', 'status']
                 .forEach(k => { o[k] = r[k] == null ? '' : r[k]; });
+            o.id = r.id;
+            o._gestorRaw = r.gestor == null ? '' : r.gestor;
+            o._origRaw = r.gestor_original == null ? '' : r.gestor_original;
             o.gestor = canonGestor(o.gestor);
             o.gestor_original = canonGestor(o.gestor_original);
             return o;
@@ -1609,6 +1782,7 @@
 
                 const firstError = [ini, ph, sn, fm].find(r => r.error);
                 if (firstError) throw new Error(firstError.error.message);
+                dataFromSupabase = true;
 
                 PPA_INITIATIVES = (ini.data && ini.data.length > 0)
                     ? ini.data.map(mapInitiativeRow)
@@ -1636,6 +1810,7 @@
                 setSyncStatus('ok');
             } catch (e) {
                 console.error('Falha ao hidratar do Supabase:', e);
+                dataFromSupabase = false;
                 PPA_INITIATIVES = PPA_INITIATIVES_FALLBACK.slice();
                 gestorPhotos = { ...EMBEDDED_PHOTOS };
                 monthlySnapshots = [...EMBEDDED_SNAPSHOTS];
@@ -1659,7 +1834,9 @@
 
             updateSavedPhotosCounter();
             populateTab1Filters();
+            updateStaticCounters();
             renderGestoresTab();
+            subscribeRealtime();
         });
 
         /* ============================================================================
@@ -1681,6 +1858,7 @@
             if (isAdminMode) {
                 isAdminMode = false;
                 sessionStorage.removeItem(STORAGE_KEY_ADMIN_SESSION);
+                closeAllCrudModals();
                 applyAdminUIState();
                 refreshActiveView();
                 showToast('Modo Visualização ativado (edição bloqueada).', 'info');
@@ -1766,6 +1944,16 @@
             publicHtml = publicHtml.replace(/const EMBEDDED_SNAPSHOTS = \[[\s\S]*?\];/, `const EMBEDDED_SNAPSHOTS = ${snapsStr};`);
             publicHtml = publicHtml.replace(/const EMBEDDED_FMEA_OVERRIDES = \{[\s\S]*?\};/, `const EMBEDDED_FMEA_OVERRIDES = ${fmeaStr};`);
             publicHtml = publicHtml.replace(/const FORCE_PUBLIC_LOCK = false;/, `const FORCE_PUBLIC_LOCK = true;`);
+            try {
+                const fields = ['eixo', 'objetivo', 'numero', 'iniciativa', 'gestor', 'gestor_original', 'area', 'sei', 'pad', 'portaria', 'status'];
+                const liveIni = JSON.stringify(PPA_INITIATIVES.map(i => {
+                    const o = {};
+                    if (i.id != null) o.id = i.id;
+                    fields.forEach(k => { o[k] = i[k]; });
+                    return o;
+                })).replace(/</g, '\\u003c');
+                publicHtml = publicHtml.replace(/let PPA_INITIATIVES = \[[\s\S]*?\n        \];/, () => `let PPA_INITIATIVES = ${liveIni};`);
+            } catch (e) { console.warn('Não foi possível embutir as iniciativas atuais no HTML público:', e); }
 
             const blob = new Blob([publicHtml], { type: 'text/html;charset=utf-8' });
             const url = URL.createObjectURL(blob);
@@ -2109,32 +2297,29 @@
          * ABA 1: CONSULTA POR GESTOR
          * ============================================================================ */
         function populateTab1Filters() {
-            const gestorSelect = document.getElementById('t1GestorFilter');
-            const oeSelect = document.getElementById('t1OeFilter');
-            const areaSelect = document.getElementById('t1AreaFilter');
+            const fill = (selectEl, values, labelFn) => {
+                const prev = selectEl.value;
+                while (selectEl.options.length > 1) selectEl.remove(1);
+                values.forEach(v => {
+                    const opt = document.createElement('option');
+                    opt.value = v;
+                    opt.textContent = labelFn ? labelFn(v) : v;
+                    selectEl.appendChild(opt);
+                });
+                selectEl.value = values.includes(prev) ? prev : '';
+            };
 
             const uniqueGestores = [...new Set(PPA_INITIATIVES.map(i => i.gestor))].sort((a, b) => a.localeCompare(b, 'pt-BR'));
-            uniqueGestores.forEach(g => {
-                const opt = document.createElement('option');
-                opt.value = g;
-                opt.textContent = g;
-                gestorSelect.appendChild(opt);
-            });
+            fill(document.getElementById('t1GestorFilter'), uniqueGestores);
 
-            OE_METADATA.forEach(oe => {
-                const opt = document.createElement('option');
-                opt.value = oe.code;
-                opt.textContent = `${oe.code} - ${oe.short}`;
-                oeSelect.appendChild(opt);
+            const oeCodes = OE_METADATA.map(oe => oe.code);
+            fill(document.getElementById('t1OeFilter'), oeCodes, code => {
+                const oe = OE_METADATA.find(o => o.code === code);
+                return `${oe.code} - ${oe.short}`;
             });
 
             const uniqueAreas = [...new Set(PPA_INITIATIVES.map(i => i.area.trim()))].sort((a, b) => a.localeCompare(b, 'pt-BR'));
-            uniqueAreas.forEach(a => {
-                const opt = document.createElement('option');
-                opt.value = a;
-                opt.textContent = a;
-                areaSelect.appendChild(opt);
-            });
+            fill(document.getElementById('t1AreaFilter'), uniqueAreas);
         }
 
         function getTab1FilteredData() {
@@ -2304,6 +2489,7 @@
                                 </div>
                             </div>
 
+                            ${isAdminMode ? `<button onclick="event.stopPropagation(); openGestorDelModal('${safeJS}')" title="Gerenciar / Excluir Gestor" class="no-print self-end sm:self-center inline-flex items-center gap-1.5 h-9 px-3 rounded-xl text-[11px] font-bold bg-red-50 text-[#EF4444] border border-red-200 hover:bg-red-100 cursor-pointer shrink-0"><i class="fa-solid fa-user-gear"></i><span class="hidden sm:inline">Gerenciar / Excluir</span></button>` : ''}
                             <div class="no-print self-end sm:self-center w-9 h-9 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 transition-transform ${isOpen ? 'rotate-180 bg-[#1E56A0] text-white' : ''}">
                                 <i class="fa-solid fa-chevron-down text-xs"></i>
                             </div>
@@ -2320,6 +2506,7 @@
                                     <th class="py-3 px-4 w-28">Área</th>
                                     <th class="py-3 px-4 min-w-[185px]">SEI / PAD / Portaria</th>
                                     <th class="py-3 px-4 w-36 text-center">Status</th>
+                                    ${isAdminMode ? '<th class="no-print py-3 px-4 w-32 text-center">Ações</th>' : ''}
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-200 bg-white">
@@ -2350,7 +2537,14 @@
                                             </div>
                                             <div><strong class="text-slate-800">SEI:</strong> ${escapeHTML(it.sei)}</div>
                                         </td>
-                                        <td class="py-3.5 px-4 text-center">${renderStatusBadge(it.status)}</td>
+                                        <td class="py-3.5 px-4 text-center">${isAdminMode ? renderStatusSelect(it) : renderStatusBadge(it.status)}</td>
+                                        ${isAdminMode ? `<td class="no-print py-3.5 px-4 whitespace-nowrap">
+                                            <div class="flex flex-col gap-1.5 items-stretch">
+                                                <button onclick="openIeModal('${String(it.id)}')" title="Editar iniciativa" class="inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-bold text-white bg-[#1E56A0] hover:bg-[#0F2C59] cursor-pointer"><i class="fa-solid fa-pen-to-square"></i>Editar</button>
+                                                <button onclick="openAssignModal('${String(it.id)}')" title="Compartilhar / transferir esta IE" class="inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 cursor-pointer"><i class="fa-solid fa-user-plus"></i>Atribuir</button>
+                                                <button onclick="retireIni('${String(it.id)}')" title="Retirar esta IE do gestor" class="inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-bold text-[#EF4444] bg-red-50 hover:bg-red-100 border border-red-200 cursor-pointer"><i class="fa-solid fa-link-slash"></i>Retirar IE</button>
+                                            </div>
+                                        </td>` : ''}
                                     </tr>`;
                                 }).join('')}
                             </tbody>
@@ -4010,6 +4204,602 @@
                 overlay.classList.add('hidden');
                 overlay.classList.remove('flex');
             }
+        }
+
+        /* ============================================================================
+         * CRUD ADMINISTRATIVO (Supabase em tempo real — somente com isAdminMode === true)
+         * ============================================================================ */
+        const STATUS_OPTIONS = ['CONCLUÍDO', 'EM ANDAMENTO', 'NÃO INICIADA', 'CANCELADA', 'DESCONTINUADA'];
+        const STATUS_SELECT_CLASS = {
+            'CONCLUÍDO': 'bg-emerald-50 text-emerald-700 border-emerald-300',
+            'EM ANDAMENTO': 'bg-blue-50 text-[#1E56A0] border-blue-300',
+            'NÃO INICIADA': 'bg-amber-50 text-amber-800 border-amber-300',
+            'CANCELADA': 'bg-red-50 text-[#EF4444] border-red-300',
+            'DESCONTINUADA': 'bg-slate-100 text-slate-600 border-slate-300'
+        };
+        let crudBusy = false;
+        let ieEditingId = null;
+        let realtimeChannel = null;
+        let realtimeTimer = null;
+
+        const byId = id => document.getElementById(id);
+        const normTxt = s => String(s == null ? '' : s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+        function openCrudModal(id) { const m = byId(id); if (m) { m.classList.remove('hidden'); m.classList.add('flex'); } }
+        function closeCrudModal(id) { const m = byId(id); if (m) { m.classList.add('hidden'); m.classList.remove('flex'); } }
+        function closeAllCrudModals() { ['ieEditModal', 'assignModal', 'gestorDelModal'].forEach(closeCrudModal); }
+        function isModalOpen(id) { const m = byId(id); return !!m && !m.classList.contains('hidden'); }
+
+        function requireAdmin() {
+            if (!isAdminMode) { showToast('Ative o Modo Admin para editar o planejamento.', 'info'); return false; }
+            return true;
+        }
+        function requireOnline() {
+            if (!sb || !dataFromSupabase) {
+                showToast('Sem conexão com o Supabase: não é possível salvar alterações agora. Recarregue a página.', 'error');
+                return false;
+            }
+            return true;
+        }
+
+        async function runBusy(btn, busyLabel, fn) {
+            if (crudBusy) { showToast('Aguarde a operação em andamento...', 'info'); return; }
+            crudBusy = true;
+            const original = btn ? btn.innerHTML : '';
+            if (btn) { btn.disabled = true; btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i><span>${busyLabel}</span>`; }
+            try { return await fn(); }
+            finally {
+                crudBusy = false;
+                if (btn) { btn.disabled = false; btn.innerHTML = original; }
+            }
+        }
+
+        /* ---------- helpers de dados ---------- */
+        function getIniById(id) { return PPA_INITIATIVES.find(i => i.id != null && String(i.id) === String(id)); }
+        function oeKey(it) { return `${getOeCode(it.objetivo)}|${String(it.numero || '').trim().toUpperCase()}`; }
+        function listGestores() { return [...new Set(PPA_INITIATIVES.map(i => i.gestor))].filter(Boolean).sort((a, b) => a.localeCompare(b, 'pt-BR')); }
+        function listAreas() { return [...new Set(PPA_INITIATIVES.map(i => String(i.area || '').trim()))].filter(Boolean).sort((a, b) => a.localeCompare(b, 'pt-BR')); }
+        function listEixos() { return [...new Set(PPA_INITIATIVES.map(i => i.eixo))].filter(Boolean).sort((a, b) => a.localeCompare(b, 'pt-BR')); }
+        function joinNames(n) { return n.length <= 1 ? (n[0] || '') : n.slice(0, -1).join(', ') + ' e ' + n[n.length - 1]; }
+        function truncateTxt(s, n) { s = String(s || ''); return s.length > n ? s.slice(0, n - 1) + '…' : s; }
+
+        function getObjetivoOptions(extra) {
+            const opts = OE_METADATA.map(oe => {
+                const found = PPA_INITIATIVES.find(i => getOeCode(i.objetivo) === oe.code);
+                return { value: found ? found.objetivo : oe.full, label: `${oe.code} — ${oe.short}` };
+            });
+            if (extra && !opts.some(o => o.value === extra)) opts.push({ value: extra, label: extra });
+            return opts;
+        }
+        function nextNumero(code) {
+            let max = 0;
+            PPA_INITIATIVES.forEach(i => {
+                if (getOeCode(i.objetivo) !== code) return;
+                const m = String(i.numero || '').match(/(\d+)/);
+                if (m) max = Math.max(max, parseInt(m[1], 10));
+            });
+            return `IE${String(max + 1).padStart(2, '0')}.`;
+        }
+        function normalizeNumero(v) {
+            const m = String(v).trim().match(/^IE\s*0*(\d+)\.?$/i);
+            return m ? `IE${String(parseInt(m[1], 10)).padStart(2, '0')}.` : String(v).trim();
+        }
+        function eixoForOe(code) {
+            const f = PPA_INITIATIVES.find(i => getOeCode(i.objetivo) === code);
+            return f ? f.eixo : '';
+        }
+
+        /* ---------- RPC ---------- */
+        function iniToRpcArgs(o) {
+            // Preserva a grafia original gravada no banco quando o nome canônico não mudou
+            const keepRaw = (raw, canon) => (raw && canonGestor(raw) === canon) ? raw : canon;
+            return {
+                p_id: o.id != null ? o.id : null,
+                p_eixo: o.eixo,
+                p_objetivo: o.objetivo,
+                p_numero: o.numero,
+                p_iniciativa: o.iniciativa,
+                p_gestor: keepRaw(o._gestorRaw, o.gestor),
+                p_gestor_original: keepRaw(o._origRaw, o.gestor_original || o.gestor),
+                p_area: o.area,
+                p_sei: o.sei || '-',
+                p_pad: o.pad || '-',
+                p_portaria: o.portaria || '-',
+                p_status: o.status
+            };
+        }
+        async function rpcUpsertInitiative(o) {
+            const res = await sbRpc('admin_upsert_initiative', iniToRpcArgs(o));
+            let newId = res;
+            if (Array.isArray(res)) newId = res[0];
+            if (newId && typeof newId === 'object') newId = Object.values(newId)[0];
+            return newId != null ? newId : o.id;
+        }
+
+        /* ---------- sincronização com o servidor ---------- */
+        async function syncFromServer() {
+            if (!sb) return false;
+            try {
+                const [ini, ph, fm] = await withTimeout(Promise.all([
+                    sb.from('ppa_initiatives').select('*').order('id', { ascending: true }),
+                    sb.from('gestor_photos').select('gestor_name, photo_data'),
+                    sb.from('ppa_fmea_overrides').select('item_key, s, o, d')
+                ]), SUPABASE_TIMEOUT_MS);
+                const err = [ini, ph, fm].find(r => r.error);
+                if (err) throw new Error(err.error.message);
+
+                PPA_INITIATIVES = (ini.data || []).map(mapInitiativeRow);
+
+                gestorPhotos = {};
+                (ph.data || []).forEach(r => {
+                    const nm = canonGestor(r.gestor_name);
+                    if (nm === r.gestor_name || !gestorPhotos[nm]) gestorPhotos[nm] = r.photo_data;
+                });
+
+                fmeaOverrides = {};
+                (fm.data || []).forEach(r => {
+                    const ov = {};
+                    if (r.s != null) ov.S = r.s;
+                    if (r.o != null) ov.O = r.o;
+                    if (r.d != null) ov.D = r.d;
+                    const ck = canonFmeaKey(r.item_key);
+                    if (ck === r.item_key || !fmeaOverrides[ck]) fmeaOverrides[ck] = ov;
+                });
+                dataFromSupabase = true;
+                return true;
+            } catch (e) {
+                console.warn('Falha ao sincronizar com o Supabase:', e);
+                return false;
+            }
+        }
+
+        // Rótulo de compartilhamento (gestor_original) coerente com os vínculos reais de cada IE
+        async function syncShareLabels(keys) {
+            for (const key of keys) {
+                const group = PPA_INITIATIVES.filter(i => i.id != null && oeKey(i) === key);
+                if (!group.length) continue;
+                const names = [...new Set(group.map(i => i.gestor))];
+                for (const row of group) {
+                    const cur = row.gestor_original || '';
+                    let ok;
+                    if (names.length === 1) ok = cur === names[0];
+                    else ok = names.every(n => cur.includes(n));
+                    if (ok) continue;
+                    const label = names.length === 1 ? names[0] : joinNames(names);
+                    await rpcUpsertInitiative({ ...row, gestor_original: label });
+                    row.gestor_original = label;
+                    row._origRaw = label;
+                }
+            }
+        }
+        async function syncShareLabelsSafe(keys) {
+            try { await syncShareLabels(keys); }
+            catch (e) { showToast(`Alteração salva, mas não foi possível atualizar o rótulo de compartilhamento: ${e.message}`, 'error'); }
+        }
+
+        function updateStaticCounters() {
+            try {
+                const topo = buildNetworkTopology();
+                const g = topo.gestoresNodes.length;
+                const v = topo.edges.length;
+                const a = byId('staticIeTotalTxt'); if (a) a.textContent = PPA_INITIATIVES.length;
+                const b = byId('staticMapGestoresTxt'); if (b) b.textContent = g;
+                const c = byId('mapLensAllOpt'); if (c) c.textContent = `Todas as Conexões (${g} Gestores • ${v} Vínculos)`;
+            } catch (e) { /* contadores decorativos: ignora */ }
+        }
+
+        // Reconstrói tudo o que depende de PPA_INITIATIVES sem recarregar a página
+        function afterDataChange() {
+            const names = new Set(PPA_INITIATIVES.map(i => i.gestor));
+            [...expandedGestores].forEach(g => { if (!names.has(g)) expandedGestores.delete(g); });
+            if (mapSelectedNode && mapSelectedNode.type === 'gestor' && !names.has(mapSelectedNode.id)) mapSelectedNode = null;
+            mapHoveredNode = null;
+            populateTab1Filters();
+            updateStaticCounters();
+            updateSavedPhotosCounter();
+            refreshActiveView();
+            if (isModalOpen('assignModal')) { asgRenderList(); asgRenderLinks(); }
+        }
+
+        /* ---------- tempo real (Supabase Realtime) ---------- */
+        function scheduleRemoteRefresh() {
+            clearTimeout(realtimeTimer);
+            realtimeTimer = setTimeout(async () => {
+                if (crudBusy) return; // a própria operação já recarrega os dados
+                if (await syncFromServer()) afterDataChange();
+            }, 700);
+        }
+        function subscribeRealtime() {
+            if (!sb || realtimeChannel || typeof sb.channel !== 'function') return;
+            try {
+                realtimeChannel = sb.channel('ppa-live')
+                    .on('postgres_changes', { event: '*', schema: 'public', table: 'ppa_initiatives' }, scheduleRemoteRefresh)
+                    .on('postgres_changes', { event: '*', schema: 'public', table: 'gestor_photos' }, scheduleRemoteRefresh)
+                    .on('postgres_changes', { event: '*', schema: 'public', table: 'ppa_fmea_overrides' }, scheduleRemoteRefresh)
+                    .subscribe();
+            } catch (e) { console.warn('Realtime indisponível:', e); }
+        }
+
+        /* ---------- Status inline ---------- */
+        function renderStatusSelect(it) {
+            const st = String(it.status || '');
+            const opts = STATUS_OPTIONS.includes(st) ? STATUS_OPTIONS : [st, ...STATUS_OPTIONS];
+            const cls = STATUS_SELECT_CLASS[st.toUpperCase()] || 'bg-slate-50 text-slate-700 border-slate-300';
+            return `<select onchange="updateIniStatus('${String(it.id)}', this.value, this)" title="Alterar status (salva no Supabase)" class="no-print w-full min-w-[132px] px-2 py-1.5 rounded-lg text-[11px] font-bold border cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#1E56A0] ${cls}">${opts.map(s => `<option value="${escapeHTML(s)}" ${s === st ? 'selected' : ''}>${escapeHTML(s)}</option>`).join('')}</select>`;
+        }
+
+        async function updateIniStatus(id, newStatus, selectEl) {
+            const it = getIniById(id);
+            if (!requireAdmin() || !requireOnline() || !it) { renderGestoresTab(); return; }
+            if (crudBusy) { showToast('Aguarde a operação em andamento...', 'info'); renderGestoresTab(); return; }
+            if (it.status === newStatus) return;
+            crudBusy = true;
+            if (selectEl) selectEl.disabled = true;
+            try {
+                await rpcUpsertInitiative({ ...it, status: newStatus });
+                it.status = newStatus;
+                showToast(`${it.numero} (${it.gestor}) → ${newStatus}`, 'success');
+            } catch (e) {
+                showToast(`Falha ao salvar status: ${e.message}`, 'error');
+            } finally {
+                crudBusy = false;
+                afterDataChange();
+            }
+        }
+
+        /* ---------- Criar / Editar IE ---------- */
+        function openIeModal(id = null) {
+            if (!requireAdmin() || !requireOnline()) return;
+            let it = null;
+            if (id != null) {
+                it = getIniById(id);
+                if (!it) { showToast('Esta iniciativa não possui identificador no banco. Recarregue a página.', 'error'); return; }
+            }
+            ieEditingId = it ? it.id : null;
+            byId('ieEditTitle').textContent = it ? 'Editar Iniciativa (IE)' : 'Nova Iniciativa (IE)';
+            byId('ieEditSubtitle').textContent = it ? `${it.numero} • ${getOeCode(it.objetivo)} • ${it.gestor}` : 'Cadastrar uma nova IE no banco de dados';
+            byId('ieEditIcon').className = it ? 'fa-solid fa-pen-to-square' : 'fa-solid fa-plus';
+            byId('ieSaveLabel').textContent = it ? 'Salvar Alterações' : 'Cadastrar IE';
+
+            byId('dlGestores').innerHTML = listGestores().map(g => `<option value="${escapeHTML(g)}"></option>`).join('');
+            byId('dlAreas').innerHTML = listAreas().map(a => `<option value="${escapeHTML(a)}"></option>`).join('');
+            byId('dlEixos').innerHTML = listEixos().map(x => `<option value="${escapeHTML(x)}"></option>`).join('');
+
+            const objSel = byId('ieObjetivo');
+            objSel.innerHTML = getObjetivoOptions(it ? it.objetivo : null).map(o => `<option value="${escapeHTML(o.value)}">${escapeHTML(o.label)}</option>`).join('');
+
+            const stSel = byId('ieStatus');
+            const stList = it && !STATUS_OPTIONS.includes(it.status) ? [it.status, ...STATUS_OPTIONS] : STATUS_OPTIONS;
+            stSel.innerHTML = stList.map(s => `<option value="${escapeHTML(s)}">${escapeHTML(s)}</option>`).join('');
+
+            if (it) {
+                objSel.value = it.objetivo;
+                byId('ieEixo').value = it.eixo;
+                byId('ieNumero').value = it.numero;
+                stSel.value = it.status;
+                byId('ieIniciativa').value = it.iniciativa;
+                byId('ieGestor').value = it.gestor;
+                byId('ieArea').value = it.area;
+                byId('ieSei').value = it.sei === '-' ? '' : it.sei;
+                byId('iePad').value = it.pad === '-' ? '' : it.pad;
+                byId('iePortaria').value = it.portaria === '-' ? '' : it.portaria;
+            } else {
+                stSel.value = 'NÃO INICIADA';
+                ['ieIniciativa', 'ieGestor', 'ieArea', 'ieSei', 'iePad', 'iePortaria'].forEach(f => { byId(f).value = ''; });
+                ieObjetivoChanged();
+            }
+            openCrudModal('ieEditModal');
+            setTimeout(() => byId(it ? 'ieIniciativa' : 'ieGestor').focus(), 80);
+        }
+
+        function ieObjetivoChanged() {
+            if (ieEditingId != null) return; // na edição, não sobrescreve nº/eixo
+            const code = getOeCode(byId('ieObjetivo').value);
+            byId('ieNumero').value = nextNumero(code);
+            byId('ieEixo').value = eixoForOe(code);
+        }
+
+        function applyLocalUpsert(rec, savedId, old) {
+            if (old) {
+                Object.assign(old, rec, { id: savedId != null ? savedId : old.id });
+                old._gestorRaw = iniToRpcArgs(rec).p_gestor;
+            } else {
+                PPA_INITIATIVES.push({ ...rec, id: savedId, _gestorRaw: iniToRpcArgs(rec).p_gestor, _origRaw: rec.gestor_original });
+            }
+        }
+
+        async function saveIeModal() {
+            if (!requireAdmin() || !requireOnline()) return;
+            const g = id => byId(id).value.trim();
+            const old = ieEditingId != null ? getIniById(ieEditingId) : null;
+            if (ieEditingId != null && !old) {
+                showToast('Esta iniciativa foi removida por outro usuário.', 'error');
+                closeCrudModal('ieEditModal');
+                return;
+            }
+            const rec = {
+                eixo: g('ieEixo'),
+                objetivo: g('ieObjetivo'),
+                numero: normalizeNumero(g('ieNumero')),
+                iniciativa: g('ieIniciativa').replace(/\s+/g, ' '),
+                gestor: canonGestor(g('ieGestor')),
+                area: g('ieArea'),
+                sei: g('ieSei') || '-',
+                pad: g('iePad') || '-',
+                portaria: g('iePortaria') || '-',
+                status: g('ieStatus')
+            };
+            const missing = [['objetivo', 'Objetivo'], ['eixo', 'Eixo'], ['numero', 'Nº da IE'], ['iniciativa', 'Descrição'], ['gestor', 'Gestor'], ['area', 'Área'], ['status', 'Status']]
+                .find(([k]) => !rec[k]);
+            if (missing) { showToast(`Preencha o campo obrigatório: ${missing[1]}.`, 'error'); return; }
+
+            const dup = PPA_INITIATIVES.find(i => i !== old && oeKey(i) === oeKey(rec) && i.gestor === rec.gestor);
+            if (dup) { showToast(`${rec.gestor} já possui a ${rec.numero} em ${getOeCode(rec.objetivo)}.`, 'error'); return; }
+
+            rec.id = old ? old.id : null;
+            rec.gestor_original = old ? old.gestor_original : rec.gestor;
+            rec._gestorRaw = old ? old._gestorRaw : '';
+            rec._origRaw = old ? old._origRaw : '';
+
+            await runBusy(byId('ieSaveBtn'), 'Salvando...', async () => {
+                try {
+                    const savedId = await rpcUpsertInitiative(rec);
+                    const keys = new Set([oeKey(rec)]);
+                    if (old) keys.add(oeKey(old));
+                    const identityChanged = !old || oeKey(old) !== oeKey(rec) || old.gestor !== rec.gestor;
+                    const oldSnapshot = old ? { ...old } : null;
+
+                    if (!(await syncFromServer())) applyLocalUpsert(rec, savedId, old);
+                    if (identityChanged) await syncShareLabelsSafe(keys);
+
+                    expandedGestores.add(rec.gestor);
+                    closeCrudModal('ieEditModal');
+                    afterDataChange();
+                    showToast(oldSnapshot ? `${rec.numero} atualizada com sucesso!` : `${rec.numero} cadastrada com sucesso!`, 'success');
+                } catch (e) {
+                    showToast(`Falha ao salvar iniciativa: ${e.message}`, 'error');
+                }
+            });
+        }
+
+        /* ---------- Atribuir / compartilhar / transferir / retirar ---------- */
+        function openAssignModal(preselectId = null) {
+            if (!requireAdmin() || !requireOnline()) return;
+            byId('asgSearch').value = '';
+            byId('asgTarget').value = '';
+            byId('asgTargetHint').textContent = '';
+            document.querySelector('input[name="asgMode"][value="share"]').checked = true;
+            byId('dlGestores').innerHTML = listGestores().map(g => `<option value="${escapeHTML(g)}"></option>`).join('');
+            asgRenderList(preselectId);
+            asgRenderLinks();
+            openCrudModal('assignModal');
+        }
+
+        function asgRenderList(selectId) {
+            const sel = byId('asgIeSelect');
+            const q = normTxt(byId('asgSearch').value.trim());
+            const prev = selectId != null ? String(selectId) : sel.value;
+            const rows = PPA_INITIATIVES
+                .filter(i => i.id != null)
+                .filter(i => !q || normTxt(`${getOeCode(i.objetivo)} ${i.numero} ${i.gestor} ${i.area} ${i.iniciativa}`).includes(q))
+                .sort((a, b) => getOeCode(a.objetivo).localeCompare(getOeCode(b.objetivo))
+                    || String(a.numero).localeCompare(String(b.numero), 'pt-BR', { numeric: true })
+                    || a.gestor.localeCompare(b.gestor, 'pt-BR'));
+            sel.innerHTML = rows.map(i => `<option value="${escapeHTML(String(i.id))}">${escapeHTML(getOeCode(i.objetivo))} · ${escapeHTML(i.numero)} · ${escapeHTML(i.gestor)} — ${escapeHTML(truncateTxt(i.iniciativa, 90))}</option>`).join('');
+            if (rows.some(r => String(r.id) === prev)) sel.value = prev;
+            else sel.selectedIndex = -1;
+            if (selectId != null) asgRenderLinks();
+        }
+
+        function asgRenderLinks() {
+            const box = byId('asgLinksBox');
+            const src = getIniById(byId('asgIeSelect').value);
+            if (!src) { box.innerHTML = '<span class="text-slate-500">Selecione uma IE na lista para ver seus vínculos atuais.</span>'; return; }
+            const group = PPA_INITIATIVES.filter(i => oeKey(i) === oeKey(src));
+            box.innerHTML = `
+                <p class="font-extrabold text-[#0F2C59] mb-1.5">${escapeHTML(src.numero)} • ${escapeHTML(getOeCode(src.objetivo))} — ${group.length} vínculo${group.length === 1 ? '' : 's'} atual${group.length === 1 ? '' : 'is'}</p>
+                <p class="mb-2 text-slate-600">${escapeHTML(truncateTxt(src.iniciativa, 160))}</p>
+                <ul class="space-y-1.5">
+                    ${group.map(r => `
+                    <li class="flex items-center justify-between gap-2 bg-white border ${r.id === src.id ? 'border-[#1E56A0]' : 'border-slate-200'} rounded-lg px-2.5 py-1.5">
+                        <span class="min-w-0 truncate"><strong class="text-slate-800">${escapeHTML(r.gestor)}</strong> <span class="text-slate-500">(${escapeHTML(r.area)}) • ${escapeHTML(r.status)}</span>${r.id === src.id ? ' <span class="text-[10px] font-extrabold text-[#1E56A0]">← selecionada</span>' : ''}</span>
+                        <button onclick="retireIni('${String(r.id)}')" class="shrink-0 inline-flex items-center gap-1 px-2 py-1 rounded-md text-[11px] font-bold text-[#EF4444] bg-red-50 hover:bg-red-100 border border-red-200 cursor-pointer"><i class="fa-solid fa-link-slash"></i>Retirar</button>
+                    </li>`).join('')}
+                </ul>`;
+        }
+
+        function asgTargetInput() {
+            const v = canonGestor(byId('asgTarget').value);
+            const hint = byId('asgTargetHint');
+            if (!v) { hint.textContent = ''; return; }
+            hint.textContent = listGestores().includes(v)
+                ? `Gestor existente: ${PPA_INITIATIVES.filter(i => i.gestor === v).length} IE(s) atualmente.`
+                : 'Gestor novo: será cadastrado automaticamente ao aplicar.';
+        }
+
+        async function confirmAssign() {
+            if (!requireAdmin() || !requireOnline()) return;
+            const src = getIniById(byId('asgIeSelect').value);
+            if (!src) { showToast('Selecione a IE que deseja atribuir.', 'error'); return; }
+            const target = canonGestor(byId('asgTarget').value);
+            if (!target) { showToast('Informe o gestor de destino.', 'error'); return; }
+            const mode = document.querySelector('input[name="asgMode"]:checked').value;
+            if (target === src.gestor) { showToast(`${target} já é o gestor desta linha da IE.`, 'error'); return; }
+            const group = PPA_INITIATIVES.filter(i => oeKey(i) === oeKey(src));
+            if (group.some(r => r.gestor === target)) {
+                showToast(`${target} já possui a ${src.numero} em ${getOeCode(src.objetivo)}. Use "Retirar" se quiser remover algum vínculo.`, 'error');
+                return;
+            }
+            const isNew = !listGestores().includes(target);
+
+            await runBusy(byId('asgConfirmBtn'), 'Aplicando...', async () => {
+                try {
+                    const keys = new Set([oeKey(src)]);
+                    if (mode === 'share') {
+                        const copy = { ...src, id: null, gestor: target, _gestorRaw: '', _origRaw: '' };
+                        const newId = await rpcUpsertInitiative(copy);
+                        PPA_INITIATIVES.push({ ...copy, id: newId });
+                    } else {
+                        await rpcUpsertInitiative({ ...src, gestor: target, _gestorRaw: '' });
+                        src.gestor = target;
+                        src._gestorRaw = target;
+                    }
+                    await syncShareLabelsSafe(keys);
+                    await syncFromServer();
+                    expandedGestores.add(target);
+                    afterDataChange();
+                    byId('asgTarget').value = '';
+                    byId('asgTargetHint').textContent = '';
+                    showToast(mode === 'share'
+                        ? `${src.numero} compartilhada com ${target}${isNew ? ' (novo gestor)' : ''}!`
+                        : `${src.numero} transferida para ${target}${isNew ? ' (novo gestor)' : ''}!`, 'success');
+                } catch (e) {
+                    showToast(`Falha ao atribuir IE: ${e.message}`, 'error');
+                    await syncFromServer();
+                    afterDataChange();
+                }
+            });
+        }
+
+        function retireIni(id) {
+            if (!requireAdmin() || !requireOnline()) return;
+            const it = getIniById(id);
+            if (!it) { showToast('IE não encontrada. Recarregue a página.', 'error'); return; }
+            const group = PPA_INITIATIVES.filter(i => oeKey(i) === oeKey(it));
+            const gestorCount = PPA_INITIATIVES.filter(i => i.gestor === it.gestor).length;
+            let msg = `Retirar a ${it.numero} (${getOeCode(it.objetivo)}) de ${it.gestor}? A linha será excluída do banco de dados.`;
+            if (group.length === 1) msg += ' Esta é a única atribuição da IE: ela deixará de existir no planejamento.';
+            if (gestorCount === 1) msg += ` ${it.gestor} ficará sem IEs e deixará de aparecer no painel.`;
+            openConfirmModal('Retirar IE do gestor', msg, () => doRetireIni(id));
+        }
+
+        async function doRetireIni(id) {
+            const it = getIniById(id);
+            if (!it) return;
+            if (crudBusy) { showToast('Aguarde a operação em andamento...', 'info'); return; }
+            crudBusy = true;
+            try {
+                await sbRpc('admin_delete_initiative', { p_id: it.id });
+                const key = oeKey(it);
+                PPA_INITIATIVES = PPA_INITIATIVES.filter(i => i !== it);
+                await syncShareLabelsSafe(new Set([key]));
+                await syncFromServer();
+                afterDataChange();
+                showToast(`${it.numero} retirada de ${it.gestor}.`, 'success');
+            } catch (e) {
+                showToast(`Falha ao retirar IE: ${e.message}`, 'error');
+            } finally {
+                crudBusy = false;
+            }
+        }
+
+        /* ---------- Gerenciar / excluir gestor ---------- */
+        function openGestorDelModal(name = null) {
+            if (!requireAdmin() || !requireOnline()) return;
+            const gestores = listGestores();
+            if (!gestores.length) { showToast('Não há gestores cadastrados.', 'info'); return; }
+            byId('gdPick').innerHTML = gestores.map(g => `<option value="${escapeHTML(g)}">${escapeHTML(g)}</option>`).join('');
+            byId('gdPick').value = name && gestores.includes(name) ? name : gestores[0];
+            document.querySelector('input[name="gdMode"][value="transfer"]').checked = true;
+            byId('gdAck').checked = false;
+            gdRefresh();
+            openCrudModal('gestorDelModal');
+        }
+
+        function gdRefresh() {
+            const name = byId('gdPick').value;
+            const items = PPA_INITIATIVES.filter(i => i.gestor === name);
+            const fm = Object.keys(fmeaOverrides).filter(k => k.endsWith('_' + name)).length;
+            byId('gdSummary').innerHTML = name
+                ? `<strong>${escapeHTML(name)}</strong> possui <strong>${items.length} IE${items.length === 1 ? '' : 's'}</strong>${gestorPhotos[name] ? ', foto cadastrada' : ''}${fm ? ` e ${fm} calibração(ões) FMEA` : ''}.`
+                : 'Nenhum gestor disponível.';
+
+            const tsel = byId('gdTarget');
+            const prev = tsel.value;
+            const others = listGestores().filter(g => g !== name);
+            tsel.innerHTML = others.length
+                ? others.map(g => `<option value="${escapeHTML(g)}">${escapeHTML(g)}</option>`).join('')
+                : '<option value="">(não há outro gestor disponível)</option>';
+            if (others.includes(prev)) tsel.value = prev;
+
+            const mode = document.querySelector('input[name="gdMode"]:checked').value;
+            const isTransfer = mode === 'transfer';
+            byId('gdBoxTransfer').classList.toggle('border-[#1E56A0]', isTransfer);
+            byId('gdBoxTransfer').classList.toggle('bg-blue-50/40', isTransfer);
+            byId('gdBoxDelete').classList.toggle('border-[#EF4444]', !isTransfer);
+            byId('gdBoxDelete').classList.toggle('bg-red-50/50', !isTransfer);
+            tsel.disabled = !isTransfer;
+            byId('gdAck').disabled = isTransfer;
+
+            const target = tsel.value;
+            const conflicts = isTransfer && target ? items.filter(it => PPA_INITIATIVES.some(o => o.gestor === target && oeKey(o) === oeKey(it))) : [];
+            byId('gdConflict').textContent = conflicts.length
+                ? `Atenção: ${conflicts.length} IE(s) já constam com ${target}; nesses casos o vínculo do gestor excluído será apenas removido (sem duplicar).`
+                : '';
+            byId('gdConfirmLabel').textContent = isTransfer ? 'Transferir e Excluir' : 'Excluir Gestor e IEs';
+        }
+
+        async function confirmGestorDelete() {
+            if (!requireAdmin() || !requireOnline()) return;
+            const name = byId('gdPick').value;
+            if (!name) { showToast('Selecione um gestor.', 'error'); return; }
+            const mode = document.querySelector('input[name="gdMode"]:checked').value;
+            const items = PPA_INITIATIVES.filter(i => i.gestor === name);
+            let target = '';
+            if (mode === 'transfer') {
+                target = byId('gdTarget').value;
+                if (!target || target === name) { showToast('Escolha o gestor que receberá as IEs.', 'error'); return; }
+            } else if (!byId('gdAck').checked) {
+                showToast('Marque a confirmação para excluir o gestor e suas IEs.', 'error');
+                return;
+            }
+
+            await runBusy(byId('gdConfirmBtn'), 'Processando...', async () => {
+                try {
+                    const keys = new Set(items.map(oeKey));
+                    const rawNames = [...new Set(items.map(i => i._gestorRaw || i.gestor))];
+                    let conflicts = [];
+                    let rawTarget = null;
+                    if (mode === 'transfer') {
+                        conflicts = items.filter(it => PPA_INITIATIVES.some(o => o.gestor === target && oeKey(o) === oeKey(it)));
+                        for (const c of conflicts) await sbRpc('admin_delete_initiative', { p_id: c.id });
+                        const tRow = PPA_INITIATIVES.find(i => i.gestor === target);
+                        rawTarget = (tRow && tRow._gestorRaw) || target;
+                    }
+                    for (const raw of rawNames) {
+                        await sbRpc('admin_delete_gestor', { p_gestor: raw, p_novo_gestor: rawTarget });
+                    }
+
+                    // limpeza local imediata (foto e FMEA do gestor removido)
+                    [name, ...rawNames].forEach(n => {
+                        delete gestorPhotos[n];
+                        Object.keys(fmeaOverrides).forEach(k => { if (k.endsWith('_' + n)) delete fmeaOverrides[k]; });
+                    });
+
+                    if (!(await syncFromServer())) {
+                        if (mode === 'transfer') {
+                            const cs = new Set(conflicts);
+                            PPA_INITIATIVES = PPA_INITIATIVES.filter(i => !cs.has(i));
+                            items.filter(i => !cs.has(i)).forEach(i => { i.gestor = target; i._gestorRaw = rawTarget; });
+                        } else {
+                            PPA_INITIATIVES = PPA_INITIATIVES.filter(i => i.gestor !== name);
+                        }
+                    }
+                    await syncShareLabelsSafe(keys);
+
+                    expandedGestores.delete(name);
+                    if (mode === 'transfer') expandedGestores.add(target);
+                    closeCrudModal('gestorDelModal');
+                    afterDataChange();
+                    showToast(mode === 'transfer'
+                        ? `${name} removido(a); ${items.length - conflicts.length} IE(s) transferida(s) para ${target}.`
+                        : `${name} e suas ${items.length} IE(s) foram excluídos.`, 'success');
+                } catch (e) {
+                    showToast(`Falha ao excluir gestor: ${e.message}`, 'error');
+                    await syncFromServer();
+                    afterDataChange();
+                }
+            });
         }
 
         /* ============================================================================
