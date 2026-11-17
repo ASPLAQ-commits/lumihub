@@ -100,6 +100,104 @@
             position: static !important;
         }
     </style>
+
+    <!-- TEMA VISUAL v2 (camada de estilo; não altera estrutura nem lógica) -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <style id="theme-v2">
+        :root {
+            --navy: #0a1836; --navy-2: #10295c; --blue: #1d5fd1; --amber: #f5b800;
+            --line: #e6eaf2; --radius: 18px;
+            --sh-sm: 0 1px 2px rgba(15,23,42,.04), 0 2px 6px -2px rgba(15,23,42,.05);
+            --sh-md: 0 14px 32px -14px rgba(15,23,42,.18), 0 3px 8px rgba(15,23,42,.05);
+        }
+        @media screen {
+            body {
+                background:
+                    radial-gradient(1100px 520px at 88% -8%, rgba(29,95,209,.11), transparent 60%),
+                    radial-gradient(900px 420px at -8% 6%, rgba(245,184,0,.09), transparent 55%),
+                    #f4f6fb;
+                background-attachment: fixed;
+                -webkit-font-smoothing: antialiased;
+            }
+            h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; letter-spacing: -0.02em; }
+
+            /* Cabeçalho */
+            body > header {
+                background: linear-gradient(118deg, #0a1836 0%, #10295c 52%, #1a458f 100%) !important;
+                border-bottom: 0 !important;
+                position: relative;
+                box-shadow: 0 14px 34px -16px rgba(10,24,54,.6) !important;
+            }
+            body > header::after {
+                content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+                background: linear-gradient(90deg, var(--amber), #ffd75e 38%, rgba(255,215,94,0) 100%);
+            }
+            body > header h1 { font-weight: 800; font-size: clamp(1.4rem, 2.5vw, 1.95rem); }
+            body > header .bg-white.rounded-xl { border-radius: 16px !important; box-shadow: 0 6px 18px -8px rgba(0,0,0,.45) !important; }
+
+            /* Barra de abas em pílulas */
+            body > div.sticky {
+                background: rgba(255,255,255,.88) !important;
+                -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+                border-bottom: 1px solid var(--line) !important;
+                box-shadow: 0 8px 24px -18px rgba(15,23,42,.35) !important;
+            }
+            body > div.sticky nav { gap: 6px; padding: 9px 0; scrollbar-width: none; }
+            body > div.sticky nav::-webkit-scrollbar { display: none; }
+            .nav-tab-btn {
+                border-radius: 999px !important; border-bottom-width: 0 !important;
+                padding: .5rem 1rem !important; transition: background .18s, color .18s, box-shadow .18s, transform .18s;
+            }
+            .nav-tab-btn.font-semibold { color: #475569 !important; background: transparent !important; }
+            .nav-tab-btn.font-semibold:hover { background: #eaf0fb !important; color: #0f2a5c !important; }
+            .nav-tab-btn.font-bold {
+                background: linear-gradient(135deg, #10295c, #1d5fd1) !important; color: #fff !important;
+                box-shadow: 0 8px 18px -8px rgba(29,95,209,.7);
+            }
+            .nav-tab-btn.font-bold i { color: #ffd75e !important; }
+
+            /* Cartões */
+            main .bg-white.rounded-2xl {
+                border-radius: var(--radius) !important; border-color: var(--line) !important;
+                box-shadow: var(--sh-sm) !important; transition: box-shadow .22s ease, transform .22s ease, border-color .22s;
+            }
+            main .bg-white.rounded-2xl:hover { box-shadow: var(--sh-md) !important; }
+            main .gestor-card:hover { transform: translateY(-2px); border-color: #c7d6f2 !important; }
+
+            /* Campos de formulário */
+            main input[type="text"], main input[type="search"], main select, main textarea {
+                border-radius: 12px !important; border-color: #dbe2ee !important; background-color: #fbfcfe;
+                transition: border-color .15s, box-shadow .15s;
+            }
+            main input:focus, main select:focus, main textarea:focus {
+                outline: none !important; border-color: var(--blue) !important;
+                box-shadow: 0 0 0 4px rgba(29,95,209,.14) !important;
+            }
+
+            /* Tabelas */
+            main table thead th {
+                background: #f1f5fc !important; color: #334155 !important;
+                font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700;
+            }
+            main table tbody tr { transition: background-color .15s; }
+            main table tbody tr:hover > td:not([style*="background"]) { background-color: #f7faff; }
+
+            /* Modais */
+            .fixed.inset-0 { background: rgba(10,24,54,.55) !important; -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); }
+            .fixed.inset-0 > .bg-white { border-radius: 22px !important; box-shadow: 0 30px 70px -20px rgba(10,24,54,.55) !important; border-color: transparent !important; }
+
+            /* Rodapé e scrollbar */
+            footer { background: transparent !important; border-top: 1px solid var(--line) !important; }
+            ::-webkit-scrollbar { width: 9px; height: 9px; }
+            ::-webkit-scrollbar-track { background: transparent; }
+            ::-webkit-scrollbar-thumb { background: #b9c4d8; border-radius: 999px; border: 2px solid transparent; background-clip: padding-box; }
+            ::-webkit-scrollbar-thumb:hover { background: #8d9bb5; background-clip: padding-box; border: 2px solid transparent; }
+            :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+        }
+        /* Geração de PDF: neutraliza efeitos de tela */
+        main.pdf-slide-mode .bg-white.rounded-2xl { box-shadow: none !important; transform: none !important; }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+    </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased selection:bg-[#1E56A0]/20 selection:text-[#0F2C59]">
 
