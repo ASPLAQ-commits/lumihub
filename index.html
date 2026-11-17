@@ -101,102 +101,104 @@
         }
     </style>
 
-    <!-- TEMA VISUAL v2 (camada de estilo; não altera estrutura nem lógica) -->
+    <!-- TEMA VISUAL v3 (camada de estilo; não altera estrutura nem lógica) -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-    <style id="theme-v2">
+    <style id="theme-v3">
         :root {
-            --navy: #0a1836; --navy-2: #10295c; --blue: #1d5fd1; --amber: #f5b800;
-            --line: #e6eaf2; --radius: 18px;
-            --sh-sm: 0 1px 2px rgba(15,23,42,.04), 0 2px 6px -2px rgba(15,23,42,.05);
-            --sh-md: 0 14px 32px -14px rgba(15,23,42,.18), 0 3px 8px rgba(15,23,42,.05);
+            --ink:#0b1b3b; --ink-2:#37455f; --muted:#66728a; --line:#e4e8f0; --paper:#f5f6fa;
+            --brand:#1f4fbf; --brand-ink:#0f2a6b; --accent:#f5b800; --ok:#0f9d6b; --err:#d64545;
+            --radius:14px;
+            --sh-sm:0 1px 2px rgba(11,27,59,.05);
+            --sh-md:0 12px 28px -14px rgba(11,27,59,.22), 0 2px 6px rgba(11,27,59,.05);
         }
+
+        /* ---------- Cabeçalho ---------- */
+        .app-header { background:#fff; }
+        .app-header .hidden { display:none !important; }
+        .app-header__inner { max-width:80rem; margin:0 auto; padding:18px 24px; display:flex; flex-wrap:wrap; align-items:center; gap:14px 28px; }
+        .app-brand { display:flex; align-items:center; gap:16px; flex-shrink:0; }
+        .app-brand__logo { height:42px; width:auto; object-fit:contain; display:block; }
+        .app-brand__divider { width:1px; height:30px; background:var(--line); }
+        .app-brand__fallback { width:40px; height:40px; border-radius:10px; background:var(--ink); color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; font-weight:800; font-size:13px; line-height:1; }
+        .app-brand__fallback small { font-size:7px; letter-spacing:.08em; color:#aebde0; }
+        .app-title { flex:1 1 320px; min-width:0; }
+        .app-eyebrow { display:flex; align-items:center; gap:8px; margin:0 0 4px; font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--brand); }
+        .app-eyebrow::before { content:""; width:16px; height:3px; border-radius:3px; background:var(--accent); }
+        .app-title h1 { margin:0; font-family:'Plus Jakarta Sans','Inter',sans-serif; font-weight:800; font-size:clamp(1.25rem,2.2vw,1.65rem); line-height:1.15; letter-spacing:-.02em; color:var(--ink); }
+        .app-title h1 span { color:var(--muted); font-weight:600; }
+        .app-meta { display:flex; flex-wrap:wrap; align-items:center; gap:6px 16px; margin-top:8px; font-size:12px; color:var(--muted); }
+        .meta-item { display:inline-flex; align-items:center; gap:6px; font-weight:500; }
+        .meta-item i { font-size:12px; color:#9aa6bd; }
+        .meta-sync[data-state="ok"] i { color:var(--ok); }
+        .meta-sync[data-state="error"] { color:var(--err); }
+        .meta-sync[data-state="error"] i { color:var(--err); }
+        .mode-pill { display:inline-flex; align-items:center; padding:2px 10px; border-radius:999px; font-size:11px; font-weight:700; background:#eef2fb; color:var(--brand-ink); }
+        .mode-pill[data-mode="admin"] { background:#fff3c4; color:#7a5700; }
+        .app-actions { margin-left:auto; display:flex; align-items:center; gap:10px; }
+
+        .btn { display:inline-flex; align-items:center; gap:8px; height:38px; padding:0 15px; border-radius:10px; border:1px solid var(--line); background:#fff; color:var(--ink-2); font:600 13px/1 'Inter',sans-serif; cursor:pointer; white-space:nowrap; transition:background .15s, border-color .15s, color .15s, box-shadow .15s; }
+        .btn:hover { background:#f3f5fa; border-color:#d5dbe8; color:var(--ink); }
+        .btn i { font-size:13px; color:var(--brand); }
+        .btn--primary { background:var(--ink); border-color:var(--ink); color:#fff; }
+        .btn--primary:hover { background:#16295a; border-color:#16295a; color:#fff; box-shadow:0 8px 18px -10px rgba(11,27,59,.7); }
+        .btn--primary i { color:var(--accent); }
+        .btn--sm { height:32px; padding:0 12px; font-size:12px; border-radius:8px; }
+        .btn--ok { background:var(--ok); border-color:var(--ok); color:#fff; }
+        .btn--ok:hover { background:#0c8559; border-color:#0c8559; color:#fff; }
+        .btn--ok i { color:#fff; }
+        .admin-strip { max-width:80rem; margin:0 auto; padding:9px 24px; display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; }
+        .admin-strip__label { margin-right:auto; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+        .admin-strip__label i { margin-right:7px; color:var(--accent); }
+        .admin-strip__group { display:flex; gap:8px; }
+        #adminStrip { background:#f8f9fc; border-top:1px solid var(--line); }
+        @media (max-width:640px) {
+            .app-header__inner { padding:14px 16px; }
+            .app-actions { width:100%; }
+            .app-actions .btn { flex:1; justify-content:center; }
+        }
+
+        /* ---------- Página ---------- */
         @media screen {
-            body {
-                background:
-                    radial-gradient(1100px 520px at 88% -8%, rgba(29,95,209,.11), transparent 60%),
-                    radial-gradient(900px 420px at -8% 6%, rgba(245,184,0,.09), transparent 55%),
-                    #f4f6fb;
-                background-attachment: fixed;
-                -webkit-font-smoothing: antialiased;
-            }
-            h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; letter-spacing: -0.02em; }
+            body { background:var(--paper); color:var(--ink); -webkit-font-smoothing:antialiased; font-variant-numeric:tabular-nums; }
+            h1, h2, h3, h4 { font-family:'Plus Jakarta Sans','Inter',sans-serif; letter-spacing:-.02em; }
 
-            /* Cabeçalho */
-            body > header {
-                background: linear-gradient(118deg, #0a1836 0%, #10295c 52%, #1a458f 100%) !important;
-                border-bottom: 0 !important;
-                position: relative;
-                box-shadow: 0 14px 34px -16px rgba(10,24,54,.6) !important;
-            }
-            body > header::after {
-                content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
-                background: linear-gradient(90deg, var(--amber), #ffd75e 38%, rgba(255,215,94,0) 100%);
-            }
-            body > header h1 { font-weight: 800; font-size: clamp(1.4rem, 2.5vw, 1.95rem); }
-            body > header .bg-white.rounded-xl { border-radius: 16px !important; box-shadow: 0 6px 18px -8px rgba(0,0,0,.45) !important; }
-
-            /* Barra de abas em pílulas */
-            body > div.sticky {
-                background: rgba(255,255,255,.88) !important;
-                -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
-                border-bottom: 1px solid var(--line) !important;
-                box-shadow: 0 8px 24px -18px rgba(15,23,42,.35) !important;
-            }
-            body > div.sticky nav { gap: 6px; padding: 9px 0; scrollbar-width: none; }
-            body > div.sticky nav::-webkit-scrollbar { display: none; }
-            .nav-tab-btn {
-                border-radius: 999px !important; border-bottom-width: 0 !important;
-                padding: .5rem 1rem !important; transition: background .18s, color .18s, box-shadow .18s, transform .18s;
-            }
-            .nav-tab-btn.font-semibold { color: #475569 !important; background: transparent !important; }
-            .nav-tab-btn.font-semibold:hover { background: #eaf0fb !important; color: #0f2a5c !important; }
-            .nav-tab-btn.font-bold {
-                background: linear-gradient(135deg, #10295c, #1d5fd1) !important; color: #fff !important;
-                box-shadow: 0 8px 18px -8px rgba(29,95,209,.7);
-            }
-            .nav-tab-btn.font-bold i { color: #ffd75e !important; }
+            /* Abas: sublinhado âmbar na ativa */
+            body > div.sticky { background:rgba(255,255,255,.93) !important; -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); border-top:1px solid var(--line); border-bottom:1px solid var(--line) !important; box-shadow:none !important; }
+            body > div.sticky nav { gap:2px; scrollbar-width:none; }
+            body > div.sticky nav::-webkit-scrollbar { display:none; }
+            .nav-tab-btn { background:transparent !important; border-radius:0 !important; border-bottom-width:2px !important; padding:.95rem 1rem !important; transition:color .15s, border-color .15s; }
+            .nav-tab-btn.font-semibold { color:var(--muted) !important; border-bottom-color:transparent !important; }
+            .nav-tab-btn.font-semibold:hover { color:var(--ink) !important; border-bottom-color:var(--line) !important; }
+            .nav-tab-btn.font-bold { color:var(--ink) !important; border-bottom-color:var(--accent) !important; }
 
             /* Cartões */
-            main .bg-white.rounded-2xl {
-                border-radius: var(--radius) !important; border-color: var(--line) !important;
-                box-shadow: var(--sh-sm) !important; transition: box-shadow .22s ease, transform .22s ease, border-color .22s;
-            }
-            main .bg-white.rounded-2xl:hover { box-shadow: var(--sh-md) !important; }
-            main .gestor-card:hover { transform: translateY(-2px); border-color: #c7d6f2 !important; }
+            main .bg-white.rounded-2xl { border-radius:var(--radius) !important; border-color:var(--line) !important; box-shadow:var(--sh-sm) !important; transition:box-shadow .2s, transform .2s, border-color .2s; }
+            main .bg-white.rounded-2xl:hover { box-shadow:var(--sh-md) !important; }
+            main .gestor-card:hover { transform:translateY(-1px); border-color:#cdd7ec !important; }
 
-            /* Campos de formulário */
-            main input[type="text"], main input[type="search"], main select, main textarea {
-                border-radius: 12px !important; border-color: #dbe2ee !important; background-color: #fbfcfe;
-                transition: border-color .15s, box-shadow .15s;
-            }
-            main input:focus, main select:focus, main textarea:focus {
-                outline: none !important; border-color: var(--blue) !important;
-                box-shadow: 0 0 0 4px rgba(29,95,209,.14) !important;
-            }
+            /* Campos */
+            main input[type="text"], main input[type="search"], main select, main textarea { border-radius:10px !important; border-color:#d9dfeb !important; background-color:#fff; transition:border-color .15s, box-shadow .15s; }
+            main input:focus, main select:focus, main textarea:focus { outline:none !important; border-color:var(--brand) !important; box-shadow:0 0 0 3px rgba(31,79,191,.14) !important; }
 
             /* Tabelas */
-            main table thead th {
-                background: #f1f5fc !important; color: #334155 !important;
-                font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700;
-            }
-            main table tbody tr { transition: background-color .15s; }
-            main table tbody tr:hover > td:not([style*="background"]) { background-color: #f7faff; }
+            main table thead th { background:#f3f5fa !important; color:var(--ink-2) !important; font-size:11px; letter-spacing:.06em; text-transform:uppercase; font-weight:700; }
+            main table tbody tr { transition:background-color .15s; }
+            main table tbody tr:hover > td:not([style*="background"]) { background-color:#f8faff; }
 
             /* Modais */
-            .fixed.inset-0 { background: rgba(10,24,54,.55) !important; -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); }
-            .fixed.inset-0 > .bg-white { border-radius: 22px !important; box-shadow: 0 30px 70px -20px rgba(10,24,54,.55) !important; border-color: transparent !important; }
+            .fixed.inset-0 { background:rgba(11,27,59,.5) !important; -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); }
+            .fixed.inset-0 > .bg-white { border-radius:18px !important; box-shadow:0 28px 64px -20px rgba(11,27,59,.5) !important; border-color:transparent !important; }
 
-            /* Rodapé e scrollbar */
-            footer { background: transparent !important; border-top: 1px solid var(--line) !important; }
-            ::-webkit-scrollbar { width: 9px; height: 9px; }
-            ::-webkit-scrollbar-track { background: transparent; }
-            ::-webkit-scrollbar-thumb { background: #b9c4d8; border-radius: 999px; border: 2px solid transparent; background-clip: padding-box; }
-            ::-webkit-scrollbar-thumb:hover { background: #8d9bb5; background-clip: padding-box; border: 2px solid transparent; }
-            :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+            /* Rodapé, scrollbar, foco */
+            footer { background:transparent !important; border-top:1px solid var(--line) !important; }
+            ::-webkit-scrollbar { width:9px; height:9px; }
+            ::-webkit-scrollbar-track { background:transparent; }
+            ::-webkit-scrollbar-thumb { background:#c3ccdd; border-radius:999px; border:2px solid transparent; background-clip:padding-box; }
+            ::-webkit-scrollbar-thumb:hover { background:#98a5bf; background-clip:padding-box; border:2px solid transparent; }
+            :focus-visible { outline:2px solid var(--brand); outline-offset:2px; }
         }
-        /* Geração de PDF: neutraliza efeitos de tela */
-        main.pdf-slide-mode .bg-white.rounded-2xl { box-shadow: none !important; transform: none !important; }
-        @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+        main.pdf-slide-mode .bg-white.rounded-2xl { box-shadow:none !important; transform:none !important; }
+        @media (prefers-reduced-motion: reduce) { * { transition:none !important; } }
     </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased selection:bg-[#1E56A0]/20 selection:text-[#0F2C59]">
@@ -392,73 +394,49 @@
     <input type="file" id="jsonImportInput" accept="application/json,.json" class="hidden">
     <input type="file" id="snapshotImportInput" accept="application/json,.json" class="hidden">
 
-    <!-- CABEÇALHO INSTITUCIONAL (EXATO DAS IMAGENS DE REFERÊNCIA) -->
-    <header class="bg-[#13224d] text-white shadow-md border-b-4 border-[#f5b800] no-print">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-                <!-- Esquerda: Card Branco com Logos + Badges + Título Limpo -->
-                <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-                    <div class="inline-flex items-center gap-3.5 bg-white px-4 py-2.5 rounded-xl shadow-sm shrink-0 self-start sm:self-auto">
-                        <img src="logo_coren.png" alt="COREN-PE" class="h-10 w-auto object-contain" onerror="this.style.display='none'; document.getElementById('logoFallbackBadge').classList.remove('hidden');">
-                        <div id="logoHeaderDivider" class="h-7 w-px bg-[#cbd5e1]"></div>
-                        <img src="logo_asplaq.png" alt="ASPLAQ" class="h-9 w-auto object-contain" onerror="this.style.display='none'; document.getElementById('logoHeaderDivider').style.display='none';">
-                        <div id="logoFallbackBadge" class="hidden h-9 w-9 rounded-lg bg-[#13224d] text-white flex flex-col items-center justify-center font-black leading-none">
-                            <span class="text-[8px] text-blue-200">COREN</span>
-                            <span class="text-sm">PE</span>
-                        </div>
-                    </div>
+    <!-- CABEÇALHO (versão clean) -->
+    <header class="app-header no-print">
+        <div class="app-header__inner">
+            <div class="app-brand">
+                <img src="logo_coren.png" alt="COREN-PE" class="app-brand__logo" onerror="this.style.display='none'; document.getElementById('logoFallbackBadge').classList.remove('hidden');">
+                <span id="logoHeaderDivider" class="app-brand__divider"></span>
+                <img src="logo_asplaq.png" alt="ASPLAQ" class="app-brand__logo" onerror="this.style.display='none'; document.getElementById('logoHeaderDivider').style.display='none';">
+                <div id="logoFallbackBadge" class="app-brand__fallback hidden"><small>COREN</small>PE</div>
+            </div>
 
-                    <div>
-                        <div class="flex flex-wrap items-center gap-2 mb-1.5">
-                            <span class="px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-wider bg-[#1e40af] text-[#fbbf24] rounded-md">
-                                ASPLAQ • INTELIGÊNCIA ESTRATÉGICA
-                            </span>
-                            <span id="accessModeBadge" class="px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-wider rounded-md bg-[#065f46] text-[#34d399]">
-                                MODO VISUALIZAÇÃO
-                            </span>
-                            <span class="px-2.5 py-0.5 text-[11px] font-bold rounded-md bg-white/10 text-blue-100 border border-white/15">
-                                <i class="fa-solid fa-image text-[#fbbf24] mr-1"></i><span id="savedPhotosCounter">0 fotos salvas</span>
-                            </span>
-                            <span id="supabaseStatusBadge" title="Status da conexão com o Supabase" class="px-2.5 py-0.5 text-[11px] font-bold rounded-md bg-white/10 text-blue-100 border border-white/15">
-                                <i id="supabaseStatusIcon" class="fa-solid fa-database text-[#fbbf24] mr-1"></i><span id="supabaseStatusText">Sincronizando...</span>
-                            </span>
-                        </div>
-                        <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white leading-tight">
-                            Monitoramento PPA 2025/2027 - COREN-PE
-                        </h1>
-                    </div>
+            <div class="app-title">
+                <p class="app-eyebrow">ASPLAQ · Inteligência Estratégica</p>
+                <h1>Monitoramento PPA 2025/2027 <span>COREN-PE</span></h1>
+                <div class="app-meta">
+                    <span id="accessModeBadge" class="mode-pill" data-mode="view">Modo visualização</span>
+                    <span class="meta-item"><i class="fa-regular fa-image"></i><span id="savedPhotosCounter">0 fotos salvas</span></span>
+                    <span id="supabaseStatusBadge" class="meta-item meta-sync" data-state="syncing" title="Status da conexão com o Supabase">
+                        <i id="supabaseStatusIcon" class="fa-solid fa-rotate fa-spin"></i><span id="supabaseStatusText">Sincronizando...</span>
+                    </span>
                 </div>
+            </div>
 
-                <!-- Direita: Botões de Ação -->
-                <div class="flex flex-wrap items-center gap-2.5">
-                    <!-- Controles Exclusivos do Modo Administrativo -->
-                    <div id="adminBackupToolbar" class="hidden items-center bg-[#1e3a8a]/80 border border-blue-400/30 rounded-xl p-1">
-                        <button onclick="exportPhotosJSON()" title="Exportar backup de fotos salvas (.json)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-white hover:bg-white/15 transition-colors cursor-pointer">
-                            <i class="fa-solid fa-file-export text-emerald-300"></i>
-                            <span>Exportar Fotos</span>
-                        </button>
-                        <div class="w-px h-4 bg-white/20 mx-0.5"></div>
-                        <button onclick="triggerImportPhotosJSON()" title="Importar backup de fotos (.json)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-white hover:bg-white/15 transition-colors cursor-pointer">
-                            <i class="fa-solid fa-file-import text-amber-300"></i>
-                            <span>Importar Fotos</span>
-                        </button>
-                    </div>
+            <div class="app-actions">
+                <button id="toggleAdminModeBtn" onclick="toggleAdminMode()" class="btn btn--ghost">
+                    <i id="toggleAdminIcon" class="fa-solid fa-lock"></i>
+                    <span id="toggleAdminLabel">Modo Admin</span>
+                </button>
+                <button onclick="openPdfModal()" class="btn btn--primary">
+                    <i class="fa-regular fa-file-lines"></i>
+                    <span>Gerar PDF (Slides)</span>
+                </button>
+            </div>
+        </div>
 
-                    <button id="exportPublicHtmlBtn" onclick="exportPublicHtml()" title="Gera uma cópia HTML bloqueada para visualização já contendo todas as fotos e snapshots" class="hidden items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-xs font-extrabold bg-[#10B981] hover:bg-emerald-600 text-white shadow-sm transition-all cursor-pointer">
-                        <i class="fa-solid fa-share-nodes"></i>
-                        <span>Baixar HTML Público</span>
-                    </button>
-
-                    <button id="toggleAdminModeBtn" onclick="toggleAdminMode()" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-[#1e3a8a] hover:bg-blue-800 text-white border border-blue-400/40 shadow-xs transition-all cursor-pointer">
-                        <i id="toggleAdminIcon" class="fa-solid fa-lock text-[#fbbf24]"></i>
-                        <span id="toggleAdminLabel">Modo Admin</span>
-                    </button>
-
-                    <button onclick="openPdfModal()" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold bg-[#f5b800] hover:bg-[#fbbf24] text-[#0f172a] shadow-sm transition-all cursor-pointer">
-                        <i class="fa-regular fa-file-lines text-base"></i>
-                        <span>Gerar PDF (Slides)</span>
-                    </button>
+        <!-- Ferramentas do administrador (aparecem só no Modo Admin) -->
+        <div id="adminStrip" class="hidden">
+            <div class="admin-strip">
+                <span class="admin-strip__label"><i class="fa-solid fa-screwdriver-wrench"></i>Ferramentas do administrador</span>
+                <div id="adminBackupToolbar" class="admin-strip__group">
+                    <button onclick="exportPhotosJSON()" title="Exportar backup de fotos salvas (.json)" class="btn btn--sm"><i class="fa-solid fa-file-export"></i><span>Exportar fotos</span></button>
+                    <button onclick="triggerImportPhotosJSON()" title="Importar backup de fotos (.json)" class="btn btn--sm"><i class="fa-solid fa-file-import"></i><span>Importar fotos</span></button>
                 </div>
+                <button id="exportPublicHtmlBtn" onclick="exportPublicHtml()" title="Gera uma cópia HTML bloqueada para visualização já contendo todas as fotos e snapshots" class="btn btn--sm btn--ok"><i class="fa-solid fa-share-nodes"></i><span>Baixar HTML público</span></button>
             </div>
         </div>
     </header>
@@ -1370,6 +1348,19 @@
         /**
          * BASE COMPLETA DOS 102 REGISTROS DO PPA 2025/2027 COREN-PE
          */
+        /* Unificação de grafias de gestores (variante → nome canônico) */
+        const GESTOR_ALIASES = { 'Deiglison Santana': 'Deiglisson Santana' };
+        function canonGestor(name) {
+            const n = (name == null ? '' : String(name)).trim().replace(/\s+/g, ' ');
+            return GESTOR_ALIASES[n] || n;
+        }
+        function canonFmeaKey(key) {
+            for (const alias of Object.keys(GESTOR_ALIASES)) {
+                if (key.endsWith('_' + alias)) return key.slice(0, -alias.length) + GESTOR_ALIASES[alias];
+            }
+            return key;
+        }
+
         let PPA_INITIATIVES = [
             {"eixo": "EIXO ESTRATÉGICO: ESTRUTURA FÍSICA E OPERACIONAL", "objetivo": "Objetivo Estratégico 01 - Estrutura, Gestão, Transparência e Orçamento", "numero": "IE01.", "iniciativa": "Fortalecer o modelo de gestão participativa, incluindo um canal de consulta pública aos profissionais de enfermagem como ferramenta de gestão e planejamento estratégico.", "gestor": "Richardes Caúla", "gestor_original": "Richardes Caúla", "area": "ASPLAQ", "sei": "00242.128/2025-COREN-PE", "pad": "663/2024", "portaria": "345/2026", "status": "CONCLUÍDO"},
             {"eixo": "EIXO ESTRATÉGICO: ESTRUTURA FÍSICA E OPERACIONAL", "objetivo": "Objetivo Estratégico 01 - Estrutura, Gestão, Transparência e Orçamento", "numero": "IE02.", "iniciativa": "Garantir ampla divulgação e estimular a plenária pública e descentralizada em todas as subseções do estado, a fim de promover a aproximação dos profissionais com a autarquia.", "gestor": "Ravena Ferreira", "gestor_original": "Ravena Ferreira", "area": "ASPLEN", "sei": "-", "pad": "664/2024", "portaria": "524/2026", "status": "EM ANDAMENTO"},
@@ -1474,6 +1465,7 @@
             {"eixo": "EIXO ESTRATÉGICO - MELHORIAS E FUTURO", "objetivo": "Objetivo Estratégico 07 - Inovação e Sustentabilidade", "numero": "IE06.", "iniciativa": "Ampliar para as subseções do Coren-PE o espaço Kids, bem como a manutenção dos passatempo.", "gestor": "Cristina Lima", "gestor_original": "Cristina Lima", "area": "ASPLAQ", "sei": "-", "pad": "813/2024", "portaria": "1174/2024", "status": "EM ANDAMENTO"},
             {"eixo": "EIXO ESTRATÉGICO - MELHORIAS E FUTURO", "objetivo": "Objetivo Estratégico 07 - Inovação e Sustentabilidade", "numero": "IE07.", "iniciativa": "Ampliar ações da campanha Coren-PE + Vida.", "gestor": "Richardes Caúla", "gestor_original": "Richardes Caúla", "area": "ASPLAQ", "sei": "-", "pad": "745/2024", "portaria": "1078/2024", "status": "EM ANDAMENTO"}
         ];
+        PPA_INITIATIVES.forEach(it => { it.gestor = canonGestor(it.gestor); it.gestor_original = canonGestor(it.gestor_original); });
         const PPA_INITIATIVES_FALLBACK = PPA_INITIATIVES.slice();
 
 
@@ -1555,18 +1547,16 @@
             const icon = document.getElementById('supabaseStatusIcon');
             const badge = document.getElementById('supabaseStatusBadge');
             if (!txt || !icon || !badge) return;
+            badge.dataset.state = state === 'syncing' || state === 'ok' ? state : 'error';
             if (state === 'syncing') {
                 txt.textContent = 'Sincronizando...';
-                icon.className = 'fa-solid fa-rotate fa-spin text-[#fbbf24] mr-1';
-                badge.className = 'px-2.5 py-0.5 text-[11px] font-bold rounded-md bg-white/10 text-blue-100 border border-white/15';
+                icon.className = 'fa-solid fa-rotate fa-spin';
             } else if (state === 'ok') {
-                txt.textContent = 'Supabase Conectado';
-                icon.className = 'fa-solid fa-circle-check text-[#34d399] mr-1';
-                badge.className = 'px-2.5 py-0.5 text-[11px] font-bold rounded-md bg-emerald-500/15 text-emerald-200 border border-emerald-400/30';
+                txt.textContent = 'Supabase conectado';
+                icon.className = 'fa-solid fa-circle-check';
             } else {
-                txt.textContent = 'Supabase Offline (dados locais)';
-                icon.className = 'fa-solid fa-triangle-exclamation text-[#fca5a5] mr-1';
-                badge.className = 'px-2.5 py-0.5 text-[11px] font-bold rounded-md bg-red-500/15 text-red-200 border border-red-400/30';
+                txt.textContent = 'Supabase offline (dados locais)';
+                icon.className = 'fa-solid fa-triangle-exclamation';
             }
         }
 
@@ -1601,6 +1591,8 @@
             const o = {};
             ['eixo', 'objetivo', 'numero', 'iniciativa', 'gestor', 'gestor_original', 'area', 'sei', 'pad', 'portaria', 'status']
                 .forEach(k => { o[k] = r[k] == null ? '' : r[k]; });
+            o.gestor = canonGestor(o.gestor);
+            o.gestor_original = canonGestor(o.gestor_original);
             return o;
         }
 
@@ -1623,7 +1615,10 @@
                     : PPA_INITIATIVES_FALLBACK.slice();
 
                 gestorPhotos = {};
-                (ph.data || []).forEach(r => { gestorPhotos[r.gestor_name] = r.photo_data; });
+                (ph.data || []).forEach(r => {
+                    const nm = canonGestor(r.gestor_name);
+                    if (nm === r.gestor_name || !gestorPhotos[nm]) gestorPhotos[nm] = r.photo_data;
+                });
 
                 monthlySnapshots = (sn.data || []).map(r => ({ label: r.label, createdAt: r.created_at, oes: r.oes || {} }));
 
@@ -1633,7 +1628,8 @@
                     if (r.s != null) ov.S = r.s;
                     if (r.o != null) ov.O = r.o;
                     if (r.d != null) ov.D = r.d;
-                    fmeaOverrides[r.item_key] = ov;
+                    const ck = canonFmeaKey(r.item_key);
+                    if (ck === r.item_key || !fmeaOverrides[ck]) fmeaOverrides[ck] = ov;
                 });
 
                 lastSyncFailed = false;
@@ -1722,6 +1718,7 @@
             const badge = document.getElementById('accessModeBadge');
             const backupBar = document.getElementById('adminBackupToolbar');
             const exportHtmlBtn = document.getElementById('exportPublicHtmlBtn');
+            const adminStrip = document.getElementById('adminStrip');
             const toggleIcon = document.getElementById('toggleAdminIcon');
             const toggleLabel = document.getElementById('toggleAdminLabel');
             const subtitleHint = document.getElementById('gestoresSubtitleHint');
@@ -1730,15 +1727,12 @@
             const resetFmeaBtn = document.getElementById('resetFmeaOverridesBtn');
 
             if (isAdminMode) {
-                badge.className = 'px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-wider rounded-md bg-amber-400 text-[#0F2C59]';
-                badge.textContent = 'MODO ADMINISTRATIVO';
+                badge.dataset.mode = 'admin';
+                badge.textContent = 'Modo administrativo';
 
-                backupBar.classList.remove('hidden');
-                backupBar.classList.add('flex');
-                exportHtmlBtn.classList.remove('hidden');
-                exportHtmlBtn.classList.add('inline-flex');
+                if (adminStrip) adminStrip.classList.remove('hidden');
 
-                toggleIcon.className = 'fa-solid fa-lock-open text-emerald-300';
+                toggleIcon.className = 'fa-solid fa-lock-open';
                 toggleLabel.textContent = 'Sair do Admin';
 
                 if (subtitleHint) subtitleHint.textContent = 'Clique no card para detalhar ou no ícone de câmera sobre a foto para upload imediato';
@@ -1746,15 +1740,12 @@
                 if (clearSnapBtn) clearSnapBtn.classList.remove('hidden');
                 if (resetFmeaBtn) resetFmeaBtn.classList.remove('hidden');
             } else {
-                badge.className = 'px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-wider rounded-md bg-[#065f46] text-[#34d399]';
-                badge.textContent = 'MODO VISUALIZAÇÃO';
+                badge.dataset.mode = 'view';
+                badge.textContent = 'Modo visualização';
 
-                backupBar.classList.add('hidden');
-                backupBar.classList.remove('flex');
-                exportHtmlBtn.classList.add('hidden');
-                exportHtmlBtn.classList.remove('inline-flex');
+                if (adminStrip) adminStrip.classList.add('hidden');
 
-                toggleIcon.className = 'fa-solid fa-lock text-[#fbbf24]';
+                toggleIcon.className = 'fa-solid fa-lock';
                 toggleLabel.textContent = 'Modo Admin';
 
                 if (subtitleHint) subtitleHint.textContent = 'Clique no card para detalhar todas as iniciativas estratégicas sob responsabilidade do gestor';
